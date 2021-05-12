@@ -1,0 +1,61 @@
+package com.eps.buscamines;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.widget.Button;
+
+import java.util.ArrayList;
+
+public class BoardParcelable implements Parcelable {
+    private  ArrayList<Button> gridviewCells;
+    private int size;
+    public String[][] cells;
+
+    public BoardParcelable(int size){
+        this.size=size;
+        this.cells  = new String[4][4];
+        this.gridviewCells=new ArrayList<Button>();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Parcelable implementation
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeSerializable(cells);
+        parcel.writeInt(size);
+        //parcel.writeValue(status);
+        //parcel.writeList(gridviewCells);
+    }
+    public static final Creator<BoardParcelable> CREATOR = new Creator<BoardParcelable>() {
+        @Override
+        public BoardParcelable createFromParcel(Parcel source) {
+            return new BoardParcelable(source);
+        }
+
+        @Override
+        public BoardParcelable[] newArray(int size) {
+            return new BoardParcelable[0]; //return new Board[size];
+        }
+    };
+
+    public BoardParcelable(Parcel in) {
+        this.size = in.readInt();
+        //status = (Status) in.readValue(Status.class.getClassLoader());
+    }
+}

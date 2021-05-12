@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Minesweeper</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="help_button_text">Help</string>
+    <string name="main_button_text">Main menu</string>
+    <string name="exit_button_text">Exit game</string>
+    <string name="prestart_button_text">Start game</string>
+    <string name="help_title">Game help</string>
+    <string name="prestart_title">Minesweeper configuration</string>
+    <string name="game_button">Start</string>
+    <string name="mail_sender_text">Send Results</string>
+    <string name="send_button_text">Send</string>
+    <string name="restart_button_text">New Game</string>
+    <string name="email_to_send_field_text">Send to ...</string>
+    <string name="log_field_text">Log values</string>
+    <string name="time_send_text">Day and time</string>
+    <string name="email_chooser">Enviar correu ...</string>
+    <string name="email_chooser_error">There no mail client installed!</string>
+</resources>
