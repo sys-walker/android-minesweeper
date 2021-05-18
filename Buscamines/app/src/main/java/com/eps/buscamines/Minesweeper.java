@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -20,10 +23,11 @@ import android.widget.TableLayout;
 import android.widget.Toast;
 
 public class Minesweeper extends AppCompatActivity {
-    Button curView = null;
+
     //BoardParcelable boardParcelable;
-    public static int h;
-    public static int w;
+
+    public static int SIZE_PIXELS;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,29 +37,12 @@ public class Minesweeper extends AppCompatActivity {
 
         setContentView(R.layout.activity_minesweeper);
 
+
+
+        SIZE_PIXELS = getSizeParrilla();
+
         
-        ConstraintLayout constraintLayout= findViewById(R.id.parent_layout);
 
-        constraintLayout.post(new Runnable() {
-
-            @Override
-            public void run() {
-                Minesweeper.h = constraintLayout.getWidth();
-                Minesweeper.w = constraintLayout.getHeight();
-                //do something cool with width and height
-            }
-
-        });
-        System.out.println("on create A:"+h+" B:"+w);
-
-
-        if (savedInstanceState!=null){
-            onRestoreInstanceState(savedInstanceState);
-        }else{
-           // boardParcelable = new BoardParcelable(PreStartActivity.SIZE);
-            int i;
-        }
-        Display display = getWindowManager().getDefaultDisplay();
 
 
 
@@ -63,9 +50,28 @@ public class Minesweeper extends AppCompatActivity {
 
     }
 
+    private int getSizeParrilla() {
+        int height = getScreenHeight(getBaseContext());
+        int width  = getScreenWidth(getBaseContext());
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.i(getClass().getName(),"Its LANDSCAPE");
+            //height sizes
+            return height;
+        } else {
+            Log.i(getClass().getName(),"Its PORTRAIT");
+
+            return width;
+        }
+    }
+
     private void startDisplay() {
         ButtonAdapter imageAdapter = new ButtonAdapter(this);
         GridView gridView= findViewById(R.id.gridview);
+
+        gridView.getLayoutParams().height = SIZE_PIXELS;
+        gridView.getLayoutParams().width = SIZE_PIXELS;
+        gridView.requestLayout();
 
 
         gridView.setBackgroundColor(Color.BLUE);
@@ -73,11 +79,8 @@ public class Minesweeper extends AppCompatActivity {
 
         gridView.setNumColumns(PreStartActivity.SIZE);
 
-
-
-
-
     }
+
 
     @Override
     protected void onResume() {
@@ -95,5 +98,42 @@ public class Minesweeper extends AppCompatActivity {
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
         //outstate
+    }
+
+    public int getScreenWidth(@NonNull Context context) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        context.getDisplay().getRealMetrics(displayMetrics);
+        return displayMetrics.widthPixels;
+    }
+    public int getScreenHeight(@NonNull Context context) {
+        // Status bar+actionbar
+        int status_bar = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            status_bar = getResources().getDimensionPixelSize(resourceId);
+        }
+
+
+
+        int action_bar = 0;
+        int actionBarHeight = getSupportActionBar().getHeight();
+        if (actionBarHeight != 0){
+            action_bar= actionBarHeight;
+        }
+
+        final TypedValue tv = new TypedValue();
+        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)){
+            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
+        }
+        action_bar= actionBarHeight;
+
+
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+
+        context.getDisplay().getRealMetrics(displayMetrics);
+
+
+        return displayMetrics.heightPixels - action_bar -status_bar;
     }
 }

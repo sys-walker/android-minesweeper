@@ -28,5 +28,10 @@
     <string name="email_chooser_error">No s\'ha trobat cap client de correu!</string>
     <string name="busca_mines">Busca-mines</string>
     <string name="helpPageTitle">Ajuda</string>
+    <string name="usermame_hint" >Nom d\'usuari</string>
+    <string name="bomb_entropy_text">Percentatge de bombes</string>
+    <string name="time_control_text">Control de temps</string>
+    <string name="size_of_grid">Mida de la graella del joc</string>
+    <string name="error_username">Introdueix un nom d\'usuari</string>
 
 </resources>

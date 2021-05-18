@@ -26,4 +26,9 @@
     If a square with a mine is discovered, the game is lost. \ N
     A mark can be placed on the squares that the player thinks there are mines to help figure out which ones are nearby.
     </string>
+    <string name="usermame_hint">Username</string>
+    <string name="bomb_entropy_text">Bomb percentage</string>
+    <string name="time_control_text">Time control</string>
+    <string name="size_of_grid">Size of game grid</string>
+    <string name="error_username">Please input an username</string>
 </resources>
