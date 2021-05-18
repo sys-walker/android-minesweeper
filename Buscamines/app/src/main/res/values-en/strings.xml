@@ -17,4 +17,13 @@
     <string name="time_send_text">Day and time</string>
     <string name="email_chooser">Enviar correu ...</string>
     <string name="email_chooser_error">There no mail client installed!</string>
+    <string name="busca_mines">Minesweeper</string>
+    <string name="helpPageTitle">Ajuda</string>
+    <string name="generic_text">
+    \ n Welcome to MINE SEARCH !!!!!!!!!!!! \ n
+    \ n The game consists of clearing all the squares on a screen that do not hide a mine. \ n
+    Some squares have a number, this number indicates the mines that are in all the surrounding squares. Thus, if a square has the number 3, it means that of the eight squares around it (if it is not in a corner or edge) there are 3 with mines and 5 without mines. If an unnumbered box is discovered it indicates that none of the neighboring boxes have a mine and these are discovered automatically. \ N
+    If a square with a mine is discovered, the game is lost. \ N
+    A mark can be placed on the squares that the player thinks there are mines to help figure out which ones are nearby.
+    </string>
 </resources>

@@ -2,7 +2,16 @@
     <string name="app_name">Buscamines</string>
     <string name="hello_world">Hola Mon!</string>
     <string name="help_button_text">Ajuda</string>
-    <string name="generic_text" translatable="false">Lorem Ipsum</string>
+    <string name="generic_text">
+        \n Benvinguts al BUSCA-MINES!!!!!!!!!!!!\n
+        \n El joc consisteix a buidar totes les caselles d\'una pantalla que no ocultin una mina.\n
+        Algunes caselles tenen un nombre, aquest nombre indica les mines que són en totes les caselles circumdants.\n
+        Així, si una casella té el número 3, vol dir que de les vuit caselles\n
+        que hi ha al voltant (si no és en una cantonada o vora) hi ha 3 amb mines i 5 sense mines.\n
+        Si es descobreix una casella sense nombre indica que cap de les caselles veïnes té mina i aquestes es descobreixen automàticament.\n
+        Si es descobreix una casella amb una mina es perd la partida.\n
+        Es pot posar una marca en les caselles que el jugador pensa que hi ha mines per ajudar a descobrir la qual són a prop.
+    </string>
     <string name="main_button_text">Menu principal</string>
     <string name="exit_button_text">Sortir del joc</string>
     <string name="prestart_button_text">Començar joc</string>
@@ -17,5 +26,7 @@
     <string name="time_send_text">Dia i hora</string>
     <string name="email_chooser">Enviar correu ...</string>
     <string name="email_chooser_error">No s\'ha trobat cap client de correu!</string>
+    <string name="busca_mines">Busca-mines</string>
+    <string name="helpPageTitle">Ajuda</string>
 
 </resources>
