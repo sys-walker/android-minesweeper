@@ -17,4 +17,9 @@
     <string name="time_send_text">Day and time</string>
     <string name="email_chooser">Enviar correu ...</string>
     <string name="email_chooser_error">There no mail client installed!</string>
+    <string name="usermame_hint">Username</string>
+    <string name="bomb_entropy_text">Bomb percentage</string>
+    <string name="time_control_text">Time control</string>
+    <string name="size_of_grid">Size of game grid</string>
+    <string name="error_username">Please input an username</string>
 </resources>
