@@ -45,9 +45,9 @@ public class PreStartActivity extends AppCompatActivity {
         );
 
 
-        //Intent in = new Intent(getBaseContext(), Minesweeper.class);
-        //startActivity(in);
-        //finish();
+        Intent in = new Intent(getBaseContext(), Minesweeper.class);
+        startActivity(in);
+        finish();
     }
 
     private boolean getTimeControlToggleButton() {
