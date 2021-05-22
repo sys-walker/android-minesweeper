@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class PreStartActivity extends AppCompatActivity {
     public static int SIZE=0;
     public TextInputLayout user_textInputLayout;
-    public static int entropy = 0;
+    public static int ENTROPY = 0;
 
 
     @Override
@@ -45,9 +45,9 @@ public class PreStartActivity extends AppCompatActivity {
         );
 
 
-        //Intent in = new Intent(getBaseContext(), Minesweeper.class);
-        //startActivity(in);
-        //finish();
+        Intent in = new Intent(getBaseContext(), Minesweeper.class);
+        startActivity(in);
+        finish();
     }
 
     private boolean getTimeControlToggleButton() {
@@ -66,10 +66,13 @@ public class PreStartActivity extends AppCompatActivity {
             int radioButtonSelected = radioGroup.getCheckedRadioButtonId();
             switch (radioButtonSelected){
                 case R.id.radio_button_val7:
+                    SIZE=7;
                     return 7;
                 case R.id.radio_button_val6:
+                    SIZE=6;
                     return 6;
                 case R.id.radio_button_val5:
+                    SIZE=5;
                     return 5;
             }
         }
@@ -84,10 +87,13 @@ public class PreStartActivity extends AppCompatActivity {
             int radioButtonSelected = radioGroup.getCheckedRadioButtonId();
             switch (radioButtonSelected){
                 case R.id.radio_button_entropy15:
+                    ENTROPY=15;
                     return 15;
                 case R.id.radio_button_entropy25:
+                    ENTROPY=25;
                     return 25;
                 case R.id.radio_button_entropy35:
+                    ENTROPY=35;
                     return 35;
             }
         }
