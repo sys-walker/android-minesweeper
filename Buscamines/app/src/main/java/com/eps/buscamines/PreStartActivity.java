@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class PreStartActivity extends AppCompatActivity {
     public static int SIZE=0;
     public TextInputLayout user_textInputLayout;
-    public static int ENTROPY = 0;
+    public static double ENTROPY = 0.0;
 
 
     @Override
@@ -82,20 +82,20 @@ public class PreStartActivity extends AppCompatActivity {
 
     }
 
-    public int getRadioButtonEntropyVal() {
+    public double getRadioButtonEntropyVal() {
         RadioGroup radioGroup = findViewById(R.id.entopyRadioGroup);
         if (radioGroup != null) {
             int radioButtonSelected = radioGroup.getCheckedRadioButtonId();
             switch (radioButtonSelected){
                 case R.id.radio_button_entropy15:
-                    ENTROPY=15;
-                    return 15;
+                    ENTROPY=0.15;
+                    return 0.15;
                 case R.id.radio_button_entropy25:
-                    ENTROPY=25;
-                    return 25;
+                    ENTROPY=0.25;
+                    return 0.25;
                 case R.id.radio_button_entropy35:
-                    ENTROPY=35;
-                    return 35;
+                    ENTROPY=0.35;
+                    return 0.35;
             }
         }
         return 25;
