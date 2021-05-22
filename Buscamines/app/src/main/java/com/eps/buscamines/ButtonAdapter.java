@@ -14,7 +14,10 @@ import android.widget.TableLayout;
 import android.widget.Toast;
 
 public class ButtonAdapter extends BaseAdapter {
+
+
     private Context mContext;
+    private boolean bomb;
 
 
     public ButtonAdapter(Context context) {
@@ -37,7 +40,7 @@ public class ButtonAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView( int i, View convertView, ViewGroup viewGroup)
+    public View getView(int position, View convertView, ViewGroup viewGroup)
     {
 
 
@@ -50,30 +53,14 @@ public class ButtonAdapter extends BaseAdapter {
             button.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
 
-            button.setText(""+(i+1));
-
-
-
-            button.setOnClickListener(new ActionF());
-
         }else {
             button = (Button) convertView;
-            button.setText(""+(i+1));
-            button.setOnClickListener(new ActionF());
         }
+
+        button.setText(""+(position+1));
+        button.setOnClickListener(new MyOnClickListener(position));
 
         //return imageView;
         return button;
-    }
-
-    private static class ActionF implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            Button b = (Button) v;
-            b.setText("F");
-            b.setClickable(false);
-
-
-        }
     }
 }

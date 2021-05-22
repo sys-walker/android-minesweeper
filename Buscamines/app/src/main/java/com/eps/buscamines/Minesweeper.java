@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -22,11 +23,17 @@ import android.widget.GridView;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Minesweeper extends AppCompatActivity {
 
     //BoardParcelable boardParcelable;
 
     public static int SIZE_PIXELS;
+    public static int entropy;
+    public static ArrayList<Tile> tiles;
 
 
     @Override
@@ -37,9 +44,11 @@ public class Minesweeper extends AppCompatActivity {
 
         setContentView(R.layout.activity_minesweeper);
 
-
+        Intent intent = getIntent();
+        entropy = intent.getIntExtra("Entropy", 0);
 
         SIZE_PIXELS = getSizeParrilla();
+        setGrid();
 
 
 
@@ -49,6 +58,8 @@ public class Minesweeper extends AppCompatActivity {
         startDisplay();
 
     }
+
+
 
     private int getSizeParrilla() {
         int height = getScreenHeight(getBaseContext());
@@ -79,6 +90,29 @@ public class Minesweeper extends AppCompatActivity {
 
         gridView.setNumColumns(PreStartActivity.SIZE);
 
+    }
+
+    private void setGrid() {
+
+        //afegir el numero de bombes per a que randomitzi
+        tiles = new ArrayList<>(PreStartActivity.SIZE*PreStartActivity.SIZE);
+        int bombMax = PreStartActivity.SIZE*PreStartActivity.SIZE / entropy;
+        int actualbomb = 0;
+
+        for(int i = 0; i < PreStartActivity.SIZE; i++){
+            for(int j = 0; j < PreStartActivity.SIZE; j++){
+                Random rand = new Random();
+                boolean r = rand.nextBoolean();
+                if(r && actualbomb < bombMax){
+                    actualbomb++;
+                    tiles.add(new Tile(r));
+                }else if(!r){
+                    tiles.add(new Tile(r));
+                }else {
+                    j--;
+                }
+            }
+        }
     }
 
 

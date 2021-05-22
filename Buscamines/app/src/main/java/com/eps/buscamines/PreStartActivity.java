@@ -46,6 +46,7 @@ public class PreStartActivity extends AppCompatActivity {
 
 
         Intent in = new Intent(getBaseContext(), Minesweeper.class);
+        in.putExtra("Entropy", getRadioButtonEntropyVal());
         startActivity(in);
         finish();
     }
