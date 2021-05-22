@@ -41,7 +41,7 @@ public class Minesweeper extends AppCompatActivity {
 
         SIZE_PIXELS = getSizeParrilla();
 
-        
+
 
 
 
