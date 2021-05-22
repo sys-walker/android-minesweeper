@@ -1,12 +1,12 @@
 package com.eps.buscamines;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
 
 public class MyOnClickListener implements View.OnClickListener {
-
     int position;
 
     public MyOnClickListener(int position) {
@@ -14,57 +14,36 @@ public class MyOnClickListener implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View v) {
+        String[][] reference=Minesweeper.referenceMap;
+        //
+        //Given  Matrix[N][N]   --- acces  ------------> Matrix[x][y]
+        //                                                     ^
+        //                                                     | equivalents
+        //                                                     V
+        //Give Array[N*N]       --> access as Matrix --> Array [(N*x)+y]
 
-        Button b = (Button) view;
 
-        ArrayList<Tile> game = Minesweeper.tiles;
+        //coordinates from given position of Array
+        //x = position / N :Integer;
+        //y = position % N :Integer;
+        int x = position / reference.length;
+        int y = position % reference.length;
+        String newText = reference[x][y];
+
+        Button b = (Button) v;
+
+        ArrayList<Tile> game = Minesweeper.tiles2;
         Tile actualTile = game.get(position);
-        if(checkBomb(actualTile)){
-            b.setText("B");
+
+        b.setText(newText);
+        if (newText.equals("B")){
+            b.setBackgroundColor(Color.RED);
         }else{
-            //int surrounding = checkSurrounding(game);
-            //en comptes de NB haura de tornar el numero volgut
-            b.setText("NB");
+            b.setBackgroundColor(Color.LTGRAY);
         }
+
         b.setClickable(false);
 
-
-
-
     }
-
-    private int checkSurrounding(ArrayList<Tile> game) {
-
-        int possibleBomb = 0;
-
-        if(game.get(position - PreStartActivity.SIZE - 1).bomb) {
-            possibleBomb++;
-        }
-
-        if (game.get(position - PreStartActivity.SIZE).bomb) {
-            possibleBomb++;
-
-        }
-        if (game.get(position - PreStartActivity.SIZE + 1).bomb) {
-            possibleBomb++;
-        }
-
-        if(game.get(position - PreStartActivity.SIZE).bomb){
-
-        }
-
-
-
-        return possibleBomb;
-    }
-
-    private boolean checkBomb(Tile actualTile) {
-        if(actualTile.bomb){
-            return true;
-        }else {
-            return false;
-        }
-    }
-
 }

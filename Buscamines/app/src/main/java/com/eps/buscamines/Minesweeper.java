@@ -2,38 +2,29 @@ package com.eps.buscamines;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Minesweeper extends AppCompatActivity {
 
     //BoardParcelable boardParcelable;
 
     public static int SIZE_PIXELS;
-    public static int entropy;
-    public static ArrayList<Tile> tiles;
+    public static double entropy;
+    public static ArrayList<Tile> tiles2;
+    public static String[][] referenceMap;
 
 
     @Override
@@ -45,7 +36,7 @@ public class Minesweeper extends AppCompatActivity {
         setContentView(R.layout.activity_minesweeper);
 
         Intent intent = getIntent();
-        entropy = intent.getIntExtra("Entropy", 0);
+        entropy = intent.getDoubleExtra("Entropy", 0.25);
 
         SIZE_PIXELS = getSizeParrilla();
         setGrid();
@@ -93,26 +84,21 @@ public class Minesweeper extends AppCompatActivity {
     }
 
     private void setGrid() {
+        //hardcoded
+        MSGeneratorMap reference=new MSGeneratorMap(PreStartActivity.SIZE,entropy);
+        reference.generate();
 
-        //afegir el numero de bombes per a que randomitzi
-        tiles = new ArrayList<>(PreStartActivity.SIZE*PreStartActivity.SIZE);
-        int bombMax = PreStartActivity.SIZE*PreStartActivity.SIZE / entropy;
-        int actualbomb = 0;
+        referenceMap = reference.getBoard();
 
-        for(int i = 0; i < PreStartActivity.SIZE; i++){
-            for(int j = 0; j < PreStartActivity.SIZE; j++){
-                Random rand = new Random();
-                boolean r = rand.nextBoolean();
-                if(r && actualbomb < bombMax){
-                    actualbomb++;
-                    tiles.add(new Tile(r));
-                }else if(!r){
-                    tiles.add(new Tile(r));
-                }else {
-                    j--;
-                }
+        tiles2 = new ArrayList<>();
+
+
+        for (int i = 0; i <referenceMap.length ; i++) {
+            for (int j = 0; j < referenceMap[0].length; j++) {
+                tiles2.add(new Tile(referenceMap[i][j]));
             }
         }
+
     }
 
 
@@ -136,7 +122,9 @@ public class Minesweeper extends AppCompatActivity {
 
     public int getScreenWidth(@NonNull Context context) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
-        context.getDisplay().getRealMetrics(displayMetrics);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            context.getDisplay().getRealMetrics(displayMetrics);
+        }
         return displayMetrics.widthPixels;
     }
     public int getScreenHeight(@NonNull Context context) {
@@ -165,7 +153,9 @@ public class Minesweeper extends AppCompatActivity {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
 
-        context.getDisplay().getRealMetrics(displayMetrics);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            context.getDisplay().getRealMetrics(displayMetrics);
+        }
 
 
         return displayMetrics.heightPixels - action_bar -status_bar;

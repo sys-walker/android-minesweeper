@@ -1,14 +1,14 @@
 package com.eps.buscamines;
 
 public class Tile {
+    String bomb;
 
-    boolean bomb;
+    public Tile(String str){
 
-    public Tile(boolean bomb){
-        this.bomb = bomb;
+        this.bomb = str;
     }
 
-    public void setBomb(boolean bomb) {
+    public void setBomb(String bomb) {
         this.bomb = bomb;
     }
 }

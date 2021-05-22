@@ -1,17 +1,11 @@
 package com.eps.buscamines;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.Log;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
 public class ButtonAdapter extends BaseAdapter {
 
@@ -57,7 +51,8 @@ public class ButtonAdapter extends BaseAdapter {
             button = (Button) convertView;
         }
 
-        button.setText(""+(position+1));
+        button.setText("*");
+        button.setBackgroundColor(Color.LTGRAY);
         button.setOnClickListener(new MyOnClickListener(position));
 
         //return imageView;
