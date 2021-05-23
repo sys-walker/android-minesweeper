@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Buscamines">
         <activity android:name=".Minesweeper"></activity>
-        <activity android:name="com.eps.CronometroTest" />
         <activity
             android:name=".MailSender"
             android:label="@string/mail_sender_text" />

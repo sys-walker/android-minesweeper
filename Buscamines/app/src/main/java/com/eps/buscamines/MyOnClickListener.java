@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -50,8 +51,10 @@ public class MyOnClickListener implements View.OnClickListener {
 
 
         if (Minesweeper.generatedReference.getNUMBOMBS()==Minesweeper.tilesDescovered){
-            System.out.println("WIIIIIIIIIIIIN");
-            Minesweeper.winState=true;
+            Minesweeper.time_elapsed = Minesweeper.SECONDS -Minesweeper.time_elapsed;
+            Log.i("Time elapsed: ", " "+(Minesweeper.time_elapsed  + ""));
+
+            Minesweeper.winState=0;
             Intent in = new Intent(context,MailSender.class);
             ((Activity) context).finish();
             context.startActivity(in);

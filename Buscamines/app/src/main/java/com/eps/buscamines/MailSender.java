@@ -41,26 +41,32 @@ public class MailSender extends AppCompatActivity {
     private void set_logs() {
         EditText editText= log.getEditText();
         if (editText != null) {
-            /*
 
-            Alias: P1
-            Casillas: 25% Minas: 25 Nº
-            Minas: 6 Tiempo Total: 6
-
-            Has perdido!! Bomba en casilla 3,3
-            Te han quedado 15 Casillas por descobrir
-            */
             String header= "Alies: "+PreStartActivity.username+"\n" +
                     "Caselles: "+(PreStartActivity.size*PreStartActivity.size)+"\n" +
-                    "Nº Mines: "+Minesweeper.generatedReference.getNUMBOMBS()+", Temps total: \n";
+                    "Nº Mines: "+Minesweeper.generatedReference.getNUMBOMBS()+", Temps total: "+(
+                            (!PreStartActivity.time_control) ? "": Minesweeper.time_elapsed
 
-            String result="";
-            if (Minesweeper.winState){
+                                )+"\n";
+
+
+           String result="";
+
+
+
+            if (Minesweeper.winState==0){
                 result= header+" Has Guanyat!!!";
-            }else{
+                Toast.makeText(getBaseContext(),"Game Over... Ben fet, has guanyat!!",Toast.LENGTH_SHORT).show();
+            }
+            else if(Minesweeper.winState==1){
+                Toast.makeText(getBaseContext(),"Game Over... Mala sort, has perdut",Toast.LENGTH_SHORT).show();
                 result = header+
-                        " Has Perdut!!! Bomba a la casella "+MyOnClickListener.lose_point.toString()+"\n" +
+                        "Has Perdut!!! Bomba a la casella "+MyOnClickListener.lose_point.toString()+"\n" +
                         "T'han faltat "+(Minesweeper.tilesDescovered)+" caselles per destapar ";
+            }else{
+                result= header+"Has Perdut!!!\n" +
+                               "S'ha acabat el temps";
+                Toast.makeText(getBaseContext(),"Temps esgotat!, Repeteix sort...",Toast.LENGTH_SHORT).show();
             }
 
 

@@ -106,6 +106,20 @@ public class MSGeneratorMap{
         return SIZE*SIZE;
     }
 
+
+    @Override
+    public String toString() {
+        StringBuilder retval= new StringBuilder();
+        for(String [] ae: this.board){
+            retval.append(Arrays.toString(ae)).append("\n");
+
+        }
+        return "MinesweeperMap{\n" +
+                "board=\n" +retval.toString() +
+                ", SIZE=" + SIZE +"\n"+
+                ", NUMBOMBS=" + NUMBOMBS +"\n"+
+                '}';
+    }
     public static class Point<T,U>{
         private final T x;
         private final U y;
@@ -141,18 +155,5 @@ public class MSGeneratorMap{
         }
     }
 
-    @Override
-    public String toString() {
-        StringBuilder retval= new StringBuilder();
-        for(String [] ae: this.board){
-            retval.append(Arrays.toString(ae)).append("\n");
-
-        }
-        return "MinesweeperMap{\n" +
-                "board=\n" +retval.toString() +
-                ", SIZE=" + SIZE +"\n"+
-                ", NUMBOMBS=" + NUMBOMBS +"\n"+
-                '}';
-    }
 
 }

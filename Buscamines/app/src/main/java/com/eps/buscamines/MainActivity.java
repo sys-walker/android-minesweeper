@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void go_to_help(View view) {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void go_to_prestart(View view) {
         Intent in = new Intent(getBaseContext(),PreStartActivity.class);
+        //Intent in = new Intent(getBaseContext(), CronometroTest.class);
         startActivity(in);
         finish();
     }

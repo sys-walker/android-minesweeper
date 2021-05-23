@@ -9,15 +9,26 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.PersistableBundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class Minesweeper extends AppCompatActivity {
+    // countdown
+    public static int SECONDS=10;
+    private CountDownTimer timer;
+    public static long lastCountDown=SECONDS*1000;;
+    public static Boolean isTimedOut = false;
+    public static Context context;
+    TextView countdownText;
+    public static int time_elapsed;
+
 
     //BoardParcelable boardParcelable;
 
@@ -27,13 +38,13 @@ public class Minesweeper extends AppCompatActivity {
     public static String[][] referenceMap;
     public static MSGeneratorMap generatedReference;
     public static int tilesDescovered ;
-    public static boolean winState;
+    public static int winState =1; // 0=Win 1=Lose 2=Timeout
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         tilesDescovered = PreStartActivity.SIZE * PreStartActivity.SIZE-1;
-        winState=false;
+        winState=1;
 
 
 
@@ -44,6 +55,7 @@ public class Minesweeper extends AppCompatActivity {
 
         SIZE_PIXELS = getSizeParrilla();
         setGrid();
+
 
         startDisplay();
 
@@ -70,15 +82,21 @@ public class Minesweeper extends AppCompatActivity {
         ButtonAdapter imageAdapter = new ButtonAdapter(this);
         GridView gridView= findViewById(R.id.gridview);
 
-        gridView.getLayoutParams().height = SIZE_PIXELS;
-        gridView.getLayoutParams().width = SIZE_PIXELS;
-        gridView.requestLayout();
+        //gridView.getLayoutParams().height = SIZE_PIXELS;
+        //gridView.getLayoutParams().width = SIZE_PIXELS;
+        //gridView.requestLayout();
 
 
         gridView.setBackgroundColor(Color.BLUE);
         gridView.setAdapter(imageAdapter);
 
         gridView.setNumColumns(PreStartActivity.SIZE);
+
+        Log.i(getClass().getName(), " control? "+PreStartActivity.time_control);
+        if (PreStartActivity.time_control){
+            setCountdowm();
+        }
+
 
     }
 
@@ -104,6 +122,16 @@ public class Minesweeper extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if(PreStartActivity.time_control){
+            if (isTimedOut){
+                timer  = MiContador(lastCountDown,1000);
+                timer.start();
+            }
+
+
+            Log.i("CRONOTEST", "onResume: "+lastCountDown/1000);
+        }
+
     }
 
     @Override
@@ -165,4 +193,68 @@ public class Minesweeper extends AppCompatActivity {
     public static void undescoveredTiles() {
         tilesDescovered--;
     }
+
+    //------------------------------------------------------------------------------
+    private CountDownTimer MiContador(long lastCountDown, int step) {
+        CountDownTimer countDownTimer = new CountDownTimer(lastCountDown, step) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                Log.d("Countdown", "onTick: " + String.valueOf(millisUntilFinished / 1000));
+                CronometroTest.lastCountDown = millisUntilFinished;
+                if ((millisUntilFinished / 1000)==0){
+                    CronometroTest.isCountDown=false;
+                }else {
+                    CronometroTest.isCountDown=true;
+                }
+                Minesweeper.time_elapsed = (int) millisUntilFinished/1000;
+
+                countdownText.setText((millisUntilFinished / 1000 + ""));
+            }
+
+            @Override
+            public void onFinish() {
+
+                Log.i("Countdown", "onFinish: ");
+                CronometroTest.isCountDown = false;
+                gameover();
+            }
+        };
+        return countDownTimer;
+    }
+    private void gameover() {
+
+        if (isTimedOut == false){
+            winState=2;
+            Intent in = new Intent(getBaseContext(), MailSender.class);
+            startActivity(in);
+            finish();
+        }
+
+    }
+
+
+    private void setCountdowm() {
+        if (PreStartActivity.time_control){
+            countdownText= findViewById(R.id.textView2);
+
+            if (isTimedOut==false){
+                lastCountDown=SECONDS*1000;
+            }
+
+            timer = MiContador(lastCountDown,1000);
+            timer.start();
+        }
+
+    }
+    @Override
+    protected void onPause() {
+        Log.i("CRONOTEST", "onPause CRONO: "+lastCountDown/1000);
+        if (PreStartActivity.time_control){
+            timer.cancel();
+        }
+
+        super.onPause();
+
+    }
+
 }
