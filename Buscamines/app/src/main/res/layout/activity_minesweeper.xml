@@ -16,8 +16,8 @@
         android:layout_gravity="center"
         android:adjustViewBounds="true"
 
-        android:horizontalSpacing="0dp"
-        android:verticalSpacing="0dp"
+        android:horizontalSpacing="1dp"
+        android:verticalSpacing="1dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

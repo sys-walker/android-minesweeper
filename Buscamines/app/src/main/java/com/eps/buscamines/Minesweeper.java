@@ -25,6 +25,7 @@ public class Minesweeper extends AppCompatActivity {
     public static double entropy;
     public static ArrayList<Tile> tiles2;
     public static String[][] referenceMap;
+    public static MSGeneratorMap generatedReference;
 
 
     @Override
@@ -40,11 +41,6 @@ public class Minesweeper extends AppCompatActivity {
 
         SIZE_PIXELS = getSizeParrilla();
         setGrid();
-
-
-
-
-
 
         startDisplay();
 
@@ -84,11 +80,11 @@ public class Minesweeper extends AppCompatActivity {
     }
 
     private void setGrid() {
-        //hardcoded
-        MSGeneratorMap reference=new MSGeneratorMap(PreStartActivity.SIZE,entropy);
-        reference.generate();
 
-        referenceMap = reference.getBoard();
+        generatedReference=new MSGeneratorMap(PreStartActivity.SIZE,entropy);
+        generatedReference.generate();
+
+        referenceMap = generatedReference.getBoard();
 
         tiles2 = new ArrayList<>();
 

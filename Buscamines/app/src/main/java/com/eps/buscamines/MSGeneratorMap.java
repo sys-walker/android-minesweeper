@@ -51,6 +51,7 @@ public class MSGeneratorMap{
      * </pre>
      * @return a map with bombs
      */
+
     void generate() {
         ArrayList<Point<Integer,Integer>> bomb_positions = new ArrayList<>(this.NUMBOMBS);
 
