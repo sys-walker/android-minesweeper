@@ -9,22 +9,12 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.os.CountDownTimer;
-=======
-import android.os.Parcel;
-import android.os.Parcelable;
->>>>>>> 3359014f91e5b3a6c47959239ff1a190b34f9de1
 import android.os.PersistableBundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.View;
 import android.widget.GridView;
-<<<<<<< HEAD
-=======
-import android.widget.LinearLayout;
->>>>>>> 3359014f91e5b3a6c47959239ff1a190b34f9de1
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -42,57 +32,29 @@ public class Minesweeper extends AppCompatActivity {
 
     //BoardParcelable boardParcelable;
 
+    public static int SIZE_PIXELS;
     public static double entropy;
-    public static boolean time;
     public static ArrayList<Tile> tiles2;
     public static String[][] referenceMap;
     public static MSGeneratorMap generatedReference;
-<<<<<<< HEAD
     public static int tilesDescovered ;
     public static int winState =1; // 0=Win 1=Lose 2=Timeout
-=======
-    public static int height, width;
-    private static LinearLayout layoutTemps;
-    private static int temps = 60;
-    static TextView textView;
-
->>>>>>> 3359014f91e5b3a6c47959239ff1a190b34f9de1
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
         tilesDescovered = PreStartActivity.SIZE * PreStartActivity.SIZE-1;
         winState=1;
 
 
 
-=======
->>>>>>> 3359014f91e5b3a6c47959239ff1a190b34f9de1
         setContentView(R.layout.activity_minesweeper);
 
         Intent intent = getIntent();
         entropy = intent.getDoubleExtra("Entropy", 0.25);
-        time = intent.getBooleanExtra("Time", false);
 
-       layoutTemps = findViewById(R.id.linearLayoutTime);
-       textView = findViewById(R.id.time);
-
-        if (savedInstanceState != null) {
-
-            ArrayList<String> saved;
-            int z = 0;
-            tiles2 = savedInstanceState.getParcelable("GAME");
-            saved = savedInstanceState.getParcelable("MAP");
-            for (int i = 0; i < referenceMap.length; i++){
-                for (int j = 0; j < referenceMap.length; j++){
-                    referenceMap[i][j] = saved.get(z);
-                    z++;
-                }
-            }
-        }else {
-            setGrid();
-        }
+        SIZE_PIXELS = getSizeParrilla();
+        setGrid();
 
 
         startDisplay();
@@ -101,17 +63,18 @@ public class Minesweeper extends AppCompatActivity {
 
 
 
-    private void getSizeParrilla() {
-
+    private int getSizeParrilla() {
+        int height = getScreenHeight(getBaseContext());
+        int width  = getScreenWidth(getBaseContext());
         int orientation = getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            height =  getScreenWidth(getBaseContext());
-            width = 0;
-            Log.i(getClass().getName(),"Its LANDSCAPE width:" +  width +"and heigh: "+ height);
+            Log.i(getClass().getName(),"Its LANDSCAPE");
+            //height sizes
+            return height;
         } else {
             Log.i(getClass().getName(),"Its PORTRAIT");
-            height = 0;
-            width =  getScreenWidth(getBaseContext());
+
+            return width;
         }
     }
 
@@ -119,16 +82,9 @@ public class Minesweeper extends AppCompatActivity {
         ButtonAdapter imageAdapter = new ButtonAdapter(this);
         GridView gridView= findViewById(R.id.gridview);
 
-<<<<<<< HEAD
         //gridView.getLayoutParams().height = SIZE_PIXELS;
         //gridView.getLayoutParams().width = SIZE_PIXELS;
         //gridView.requestLayout();
-=======
-        getSizeParrilla();
-        gridView.getLayoutParams().height = height;
-        gridView.getLayoutParams().width = width;
-        gridView.requestLayout();
->>>>>>> 3359014f91e5b3a6c47959239ff1a190b34f9de1
 
 
         gridView.setBackgroundColor(Color.BLUE);
@@ -188,17 +144,6 @@ public class Minesweeper extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
-
-        outState.putParcelable("GAME", (Parcelable) tiles2);
-
-        ArrayList<String> saved = new ArrayList<>();
-
-        for (int i = 0; i < referenceMap.length; i++){
-            for (int j = 0; j < referenceMap.length; j++){
-                saved.add(referenceMap[i][j]);
-            }
-        }
-        outState.putParcelable("MAP", (Parcelable) saved);
         //outstate
     }
 
@@ -244,7 +189,6 @@ public class Minesweeper extends AppCompatActivity {
     }
 
 
-<<<<<<< HEAD
 
     public static void undescoveredTiles() {
         tilesDescovered--;
@@ -313,12 +257,4 @@ public class Minesweeper extends AppCompatActivity {
 
     }
 
-=======
-    public static void time() {
-        if (time) {
-            layoutTemps.setVisibility(View.VISIBLE);
-            textView.setText("Temps: " + temps);
-        }
-    }
->>>>>>> 3359014f91e5b3a6c47959239ff1a190b34f9de1
 }
