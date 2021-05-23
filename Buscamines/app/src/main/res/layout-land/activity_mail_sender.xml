@@ -8,16 +8,16 @@
 
 
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="143dp"
+        android:layout_height="166dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.86">
+        app:layout_constraintVertical_bias="0.602">
 
 
         <Button
@@ -25,38 +25,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="send_mail"
-            android:text="@string/send_button_text"
-          />
+            android:text="@string/send_button_text" />
 
         <Button
             android:id="@+id/pre_button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="go_to_prestart"
-            android:text="@string/restart_button_text"
-             />
+            android:text="@string/restart_button_text" />
 
         <Button
             android:id="@+id/exit_button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="go_to_eng_game"
-            android:text="@string/exit_button_text"
-             />
+            android:text="@string/exit_button_text" />
 
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/date_TextField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="303dp"
-        android:layout_height="66dp"
+        android:layout_width="300dp"
+        android:layout_height="74dp"
         android:hint="@string/time_send_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063">
+        app:layout_constraintVertical_bias="0.064">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -68,14 +66,14 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/log_values_TextField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="306dp"
-        android:layout_height="78dp"
+        android:layout_width="305dp"
+        android:layout_height="70dp"
         android:hint="@string/log_field_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -86,14 +84,15 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/receiver_mail_TextField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="305dp"
-        android:layout_height="64dp"
+        android:layout_width="302dp"
+        android:layout_height="72dp"
         android:hint="@string/email_to_send_field_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48">
+        app:layout_constraintVertical_bias="0.935">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

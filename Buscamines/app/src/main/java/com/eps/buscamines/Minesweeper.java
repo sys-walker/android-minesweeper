@@ -26,11 +26,14 @@ public class Minesweeper extends AppCompatActivity {
     public static ArrayList<Tile> tiles2;
     public static String[][] referenceMap;
     public static MSGeneratorMap generatedReference;
-
+    public static int tilesDescovered ;
+    public static boolean winState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        tilesDescovered = PreStartActivity.SIZE * PreStartActivity.SIZE-1;
+        winState=false;
 
 
 
@@ -155,5 +158,11 @@ public class Minesweeper extends AppCompatActivity {
 
 
         return displayMetrics.heightPixels - action_bar -status_bar;
+    }
+
+
+
+    public static void undescoveredTiles() {
+        tilesDescovered--;
     }
 }

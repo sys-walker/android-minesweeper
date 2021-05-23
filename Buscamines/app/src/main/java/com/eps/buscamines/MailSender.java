@@ -7,19 +7,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Date;
 
 public class MailSender extends AppCompatActivity {
     
-    public TextInputLayout date;  //-> EXTRA_SUBJECT
-    public TextInputLayout log; //->  EXTRA_TEXT
+    public TextInputLayout date;  //-> EXTRA_SUBJECT (asunto)
+    public TextInputLayout log; //->  EXTRA_TEXT (cuerpo mail)
     public TextInputLayout email_to; //-> EXTRA_EMAIL, TO
 
     Date today;
@@ -30,9 +28,9 @@ public class MailSender extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mail_sender);
 
-         date = findViewById(R.id.outlinedTextField);
-         log = findViewById(R.id.outlinedTextField2);
-         email_to =findViewById(R.id.outlinedTextField3);
+         date = findViewById(R.id.date_TextField);
+         log = findViewById(R.id.log_values_TextField);
+         email_to =findViewById(R.id.receiver_mail_TextField);
          set_today_date();
          set_logs();
 
@@ -43,7 +41,34 @@ public class MailSender extends AppCompatActivity {
     private void set_logs() {
         EditText editText= log.getEditText();
         if (editText != null) {
-            editText.setText("LOG EXEMPLE");
+            /*
+
+            Alias: P1
+            Casillas: 25% Minas: 25 Nº
+            Minas: 6 Tiempo Total: 6
+
+            Has perdido!! Bomba en casilla 3,3
+            Te han quedado 15 Casillas por descobrir
+            */
+            String header= "Alies: "+PreStartActivity.username+"\n" +
+                    "Caselles: "+(PreStartActivity.size*PreStartActivity.size)+"\n" +
+                    "Nº Mines: "+Minesweeper.generatedReference.getNUMBOMBS()+", Temps total: \n";
+
+            String result="";
+            if (Minesweeper.winState){
+                result= header+" Has Guanyat!!!";
+            }else{
+                result = header+
+                        " Has Perdut!!! Bomba a la casella "+MyOnClickListener.lose_point.toString()+"\n" +
+                        "T'han faltat "+(Minesweeper.tilesDescovered)+" caselles per destapar ";
+            }
+
+
+            Log.i(getClass().getName(),result);
+
+
+
+            editText.setText(result);
         }
     }
 
@@ -90,7 +115,7 @@ public class MailSender extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_TEXT, body_msg);
 
         try {
-            //Enviamos el Correo iniciando una nueva Activity con el emailIntent.
+
             startActivity(Intent.createChooser(emailIntent, getString(R.string.email_chooser)));
 
         } catch (android.content.ActivityNotFoundException ex) {
@@ -115,20 +140,20 @@ public class MailSender extends AppCompatActivity {
 
     private String get_mail_body() {
         String body_msg = "";
-        EditText oe = log.getEditText();//log ->  EXTRA_TEXT
+        EditText oe = log.getEditText();//log ->  EXTRA_TEXT (cuerpo mail)
         if (oe != null) {
             body_msg= oe.getText().toString();
             if (body_msg.isEmpty()){
                 body_msg="No Logs";
             }
         }else{
-            body_msg="No Logs";
+            body_msg="Error during Logs creation";
         }
         return body_msg;
     }
 
     private String get_mail_subject() {
-        EditText ae= date.getEditText(); //dia y hora  -> EXTRA_SUBJECT
+        EditText ae= date.getEditText(); //dia y hora  -> EXTRA_SUBJECT (asunto)
         String subject="";
         if (ae != null) {
             subject= ae.getText().toString();
@@ -138,6 +163,6 @@ public class MailSender extends AppCompatActivity {
         }else{
             subject=get_today_date();
         }
-        return subject;
+        return "LOG-"+subject;
     }
 }

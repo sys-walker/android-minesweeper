@@ -15,6 +15,7 @@ public class MyOnClickListener implements View.OnClickListener {
     int position;
     int win_=Minesweeper.generatedReference.getMapSize()-Minesweeper.generatedReference.getNUMBOMBS();
     int current =0;
+    public static MSGeneratorMap.Point<Integer,Integer> lose_point;
 
     public MyOnClickListener(int position, Context mContext) {
         this.position = position;
@@ -45,19 +46,29 @@ public class MyOnClickListener implements View.OnClickListener {
         Tile actualTile = game.get(position);
 
         b.setText(newText);
+
+
+
+        if (Minesweeper.generatedReference.getNUMBOMBS()==Minesweeper.tilesDescovered){
+            System.out.println("WIIIIIIIIIIIIN");
+            Minesweeper.winState=true;
+            Intent in = new Intent(context,MailSender.class);
+            ((Activity) context).finish();
+            context.startActivity(in);
+        }
+        Minesweeper.undescoveredTiles();
+
+
         if (newText.equals("B")){
             b.setBackgroundColor(Color.RED);
-            System.out.println("BOMBA xD");
+            lose_point = new MSGeneratorMap.Point<>(x,y);
             Intent in = new Intent(context,MailSender.class);
             ((Activity) context).finish();
             context.startActivity(in);
         }else{
             b.setBackgroundColor(Color.LTGRAY);
-            this.current = this.current +1;
-            if (this.current==this.win_){
-                Toast.makeText(v.getContext(),"YOU WIN",Toast.LENGTH_SHORT).show();
-            }
         }
+
 
         b.setClickable(false);
 

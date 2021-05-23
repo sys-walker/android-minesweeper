@@ -3,12 +3,10 @@ package com.eps.buscamines;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -16,26 +14,48 @@ import android.widget.ToggleButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class PreStartActivity extends AppCompatActivity {
+    public static String username;
+    public static int size;
+    public static boolean time_control;
+    public static double ENTROPY = 0.0;
+    public static int Num_Minas=0;
+
+
+
     public static int SIZE=0;
     public TextInputLayout user_textInputLayout;
-    public static double ENTROPY = 0.0;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_start);
-        user_textInputLayout = findViewById(R.id.outlinedTextField);
+        user_textInputLayout = findViewById(R.id.date_TextField);
 
     }
 
     public void go_to_start_game(View view) {
-        String username = user_textInputLayout.getEditText().getText().toString();
+
+         EditText editable = user_textInputLayout.getEditText();
+        if (editable == null) {
+            username = "Player";
+        }else{
+            username = user_textInputLayout.getEditText().getText().toString();
+        }
+
+
 
         if (username.length()==0){
             Toast.makeText(getBaseContext(),getString(R.string.error_username),Toast.LENGTH_SHORT).show();
             return;
         }
+
+        size = getRadioButtonSizeVal();
+        time_control= getTimeControlToggleButton();
+
+
+
         Log.i(getClass().getName(),
                 "            " +
                      "\nUsername     = "+username+

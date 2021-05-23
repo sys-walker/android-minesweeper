@@ -5,16 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PreStartActivity">
+
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="347dp"
+        android:layout_height="66dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12">
+        app:layout_constraintVertical_bias="0.06">
 
         <ImageView
 
@@ -43,17 +45,16 @@
 
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="314dp"
         android:layout_height="78dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.315">
+        app:layout_constraintVertical_bias="0.415">
 
         <ImageView
 
@@ -86,8 +87,7 @@
                 android:layout_width="182dp"
                 android:layout_height="63dp"
                 android:checkedButton="@+id/radio_button_val7"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radio_button_val7"
@@ -113,16 +113,17 @@
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="309dp"
         android:layout_height="95dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.734">
+        app:layout_constraintVertical_bias="0.868">
 
         <ImageView
 
@@ -161,8 +162,7 @@
                 app:layout_constraintHorizontal_bias="0.336"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.574"
-                >
+                app:layout_constraintVertical_bias="0.574">
 
                 <RadioButton
                     android:id="@+id/radio_button_entropy15"
@@ -200,21 +200,21 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.918" />
+        app:layout_constraintVertical_bias="0.812" />
 
     <LinearLayout
-        android:layout_width="182dp"
-        android:layout_height="63dp"
+        android:layout_width="189dp"
+        android:layout_height="72dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.481">
+        app:layout_constraintVertical_bias="0.127">
 
         <TextView
             android:layout_width="wrap_content"

@@ -106,7 +106,7 @@ public class MSGeneratorMap{
         return SIZE*SIZE;
     }
 
-    private static class Point<T,U>{
+    public static class Point<T,U>{
         private final T x;
         private final U y;
         public Point(T x, U y){
@@ -137,10 +137,7 @@ public class MSGeneratorMap{
 
         @Override
         public String toString() {
-            return "(" +
-                    x +
-                    "," + y +
-                    ')';
+            return "(" +x + "," + y + ')';
         }
     }
 
@@ -158,17 +155,4 @@ public class MSGeneratorMap{
                 '}';
     }
 
-    /**
-     * to see an example
-     * @param args - Non used
-
-    public static void main(String[] args) {
-        int SIZE=4;
-        double entropy=0.15;
-        MSGeneratorMap map = new MSGeneratorMap(SIZE,entropy);
-        String[][] p = map.getBoard();
-        System.out.println(map.toString());
-
-    }
-     */
 }
