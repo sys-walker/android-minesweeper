@@ -37,17 +37,8 @@ public class CronometroTest extends AppCompatActivity {
         }
 
 
-
-
-
-
         timer = MiContador(lastCountDown,1000);
         timer.start();
-
-
-
-
-
 
 
     }
