@@ -129,7 +129,7 @@
             android:layout_width="60dp"
             android:layout_height="64dp"
 
-            app:srcCompat="@drawable/índice"
+            app:srcCompat="@drawable/indice"
             tools:layout_editor_absoluteX="37dp"
             tools:layout_editor_absoluteY="450dp" />
 
