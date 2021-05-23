@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class Minesweeper extends AppCompatActivity {
     // countdown
-    public static int SECONDS=10;
+    public static int SECONDS=60;
     private CountDownTimer timer;
     public static long lastCountDown=SECONDS*1000;;
     public static Boolean isTimedOut = false;
