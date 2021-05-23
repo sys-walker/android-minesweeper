@@ -1,5 +1,6 @@
 package com.eps.buscamines;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
@@ -12,6 +13,7 @@ public class ButtonAdapter extends BaseAdapter {
 
     private Context mContext;
     private boolean bomb;
+    public Activity activity;
 
 
     public ButtonAdapter(Context context) {
@@ -53,7 +55,7 @@ public class ButtonAdapter extends BaseAdapter {
 
         button.setText("*");
         button.setBackgroundColor(Color.GRAY);
-        button.setOnClickListener(new MyOnClickListener(position,mContext));
+        button.setOnClickListener(new MyOnClickListener(position, mContext));
 
         //return imageView;
         return button;

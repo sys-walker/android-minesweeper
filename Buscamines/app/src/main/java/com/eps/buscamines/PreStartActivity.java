@@ -19,6 +19,7 @@ public class PreStartActivity extends AppCompatActivity {
     public static int SIZE=0;
     public TextInputLayout user_textInputLayout;
     public static double ENTROPY = 0.0;
+    public static boolean time = false;
 
 
     @Override
@@ -47,6 +48,7 @@ public class PreStartActivity extends AppCompatActivity {
 
         Intent in = new Intent(getBaseContext(), Minesweeper.class);
         in.putExtra("Entropy", getRadioButtonEntropyVal());
+        in.putExtra("Time", getTimeControlToggleButton());
         startActivity(in);
         finish();
     }

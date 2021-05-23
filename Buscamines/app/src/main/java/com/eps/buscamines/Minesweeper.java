@@ -9,11 +9,16 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.os.PersistableBundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
 import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -21,26 +26,44 @@ public class Minesweeper extends AppCompatActivity {
 
     //BoardParcelable boardParcelable;
 
-    public static int SIZE_PIXELS;
     public static double entropy;
+    public static boolean time;
     public static ArrayList<Tile> tiles2;
     public static String[][] referenceMap;
     public static MSGeneratorMap generatedReference;
+    public static int height, width;
+    private static LinearLayout layoutTemps;
+    private static int temps = 60;
+    static TextView textView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         setContentView(R.layout.activity_minesweeper);
 
         Intent intent = getIntent();
         entropy = intent.getDoubleExtra("Entropy", 0.25);
+        time = intent.getBooleanExtra("Time", false);
 
-        SIZE_PIXELS = getSizeParrilla();
-        setGrid();
+       layoutTemps = findViewById(R.id.linearLayoutTime);
+       textView = findViewById(R.id.time);
+
+        if (savedInstanceState != null) {
+
+            ArrayList<String> saved;
+            int z = 0;
+            tiles2 = savedInstanceState.getParcelable("GAME");
+            saved = savedInstanceState.getParcelable("MAP");
+            for (int i = 0; i < referenceMap.length; i++){
+                for (int j = 0; j < referenceMap.length; j++){
+                    referenceMap[i][j] = saved.get(z);
+                    z++;
+                }
+            }
+        }else {
+            setGrid();
+        }
 
         startDisplay();
 
@@ -48,18 +71,17 @@ public class Minesweeper extends AppCompatActivity {
 
 
 
-    private int getSizeParrilla() {
-        int height = getScreenHeight(getBaseContext());
-        int width  = getScreenWidth(getBaseContext());
+    private void getSizeParrilla() {
+
         int orientation = getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Log.i(getClass().getName(),"Its LANDSCAPE");
-            //height sizes
-            return height;
+            height =  getScreenWidth(getBaseContext());
+            width = 0;
+            Log.i(getClass().getName(),"Its LANDSCAPE width:" +  width +"and heigh: "+ height);
         } else {
             Log.i(getClass().getName(),"Its PORTRAIT");
-
-            return width;
+            height = 0;
+            width =  getScreenWidth(getBaseContext());
         }
     }
 
@@ -67,8 +89,9 @@ public class Minesweeper extends AppCompatActivity {
         ButtonAdapter imageAdapter = new ButtonAdapter(this);
         GridView gridView= findViewById(R.id.gridview);
 
-        gridView.getLayoutParams().height = SIZE_PIXELS;
-        gridView.getLayoutParams().width = SIZE_PIXELS;
+        getSizeParrilla();
+        gridView.getLayoutParams().height = height;
+        gridView.getLayoutParams().width = width;
         gridView.requestLayout();
 
 
@@ -113,6 +136,17 @@ public class Minesweeper extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
+
+        outState.putParcelable("GAME", (Parcelable) tiles2);
+
+        ArrayList<String> saved = new ArrayList<>();
+
+        for (int i = 0; i < referenceMap.length; i++){
+            for (int j = 0; j < referenceMap.length; j++){
+                saved.add(referenceMap[i][j]);
+            }
+        }
+        outState.putParcelable("MAP", (Parcelable) saved);
         //outstate
     }
 
@@ -155,5 +189,13 @@ public class Minesweeper extends AppCompatActivity {
 
 
         return displayMetrics.heightPixels - action_bar -status_bar;
+    }
+
+
+    public static void time() {
+        if (time) {
+            layoutTemps.setVisibility(View.VISIBLE);
+            textView.setText("Temps: " + temps);
+        }
     }
 }
