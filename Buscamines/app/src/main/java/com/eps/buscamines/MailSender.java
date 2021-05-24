@@ -42,18 +42,18 @@ public class MailSender extends AppCompatActivity {
         EditText editText= log.getEditText();
         if (editText != null) {
 
-            String header= "Alies: "+PreStartActivity.username+"\n" +
+           /* String header= "Alies: "+PreStartActivity.username+"\n" +
                     "Caselles: "+(PreStartActivity.size*PreStartActivity.size)+"\n" +
                     "Nº Mines: "+Minesweeper.generatedReference.getNUMBOMBS()+", Temps total: "+(
                             (!PreStartActivity.time_control) ? "": Minesweeper.time_elapsed
 
-                                )+"\n";
+                                )+"\n";*/
 
 
            String result="";
 
 
-
+            /*
             if (Minesweeper.winState==0){
                 result= header+" Has Guanyat!!!";
                 Toast.makeText(getBaseContext(),"Game Over... Ben fet, has guanyat!!",Toast.LENGTH_SHORT).show();
@@ -67,7 +67,7 @@ public class MailSender extends AppCompatActivity {
                 result= header+"Has Perdut!!!\n" +
                                "S'ha acabat el temps";
                 Toast.makeText(getBaseContext(),"Temps esgotat!, Repeteix sort...",Toast.LENGTH_SHORT).show();
-            }
+            } */
 
 
             Log.i(getClass().getName(),result);
@@ -100,7 +100,7 @@ public class MailSender extends AppCompatActivity {
     public void go_to_prestart(View view) {
         Intent in = new Intent(getBaseContext(),PreStartActivity.class);
         startActivity(in);
-        finish();
+        this.finish();
     }
 
     public void send_mail(View view) {
