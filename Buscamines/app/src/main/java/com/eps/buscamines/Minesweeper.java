@@ -39,6 +39,14 @@ public class Minesweeper extends AppCompatActivity {
     public static int milis,seg,minutos;
     public  static Handler h = new Handler();
 
+    //minesweeper
+    public static int SIZE_PIXELS;
+    public static double entropy;
+    public static ArrayList<Tile> tiles2;
+    public static String[][] referenceMap;
+    public static MSGeneratorMap generatedReference;
+    public static int tilesDescovered ;
+    public static int winState =1; // 0=Win 1=Lose 2=Timeout
 
 
 
@@ -47,13 +55,119 @@ public class Minesweeper extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_minesweeper);
 
+        tilesDescovered = PreStartActivity.SIZE * PreStartActivity.SIZE-1;
+        winState=1;
+        Intent intent = getIntent();
+        entropy = intent.getDoubleExtra("Entropy", 0.25);
+
+        SIZE_PIXELS = getSizeParrilla();
+        setGrid();
+        startDisplay(savedInstanceState);
+
+        
+
+
+
+
+
+
+    }
+
+    private void startDisplay(Bundle savedInstanceState) {
+        ButtonAdapter imageAdapter = new ButtonAdapter(this);
+        GridView gridView= findViewById(R.id.gridview);
+
+        //gridView.getLayoutParams().height = SIZE_PIXELS;
+        //gridView.getLayoutParams().width = SIZE_PIXELS;
+        //gridView.requestLayout();
+
+
+        gridView.setBackgroundColor(Color.BLUE);
+        gridView.setAdapter(imageAdapter);
+
+        gridView.setNumColumns(PreStartActivity.SIZE);
+
+        Log.i(getClass().getName(), " control? "+PreStartActivity.time_control);
         setTimerTextViews(savedInstanceState);
+    }
+
+    private void setGrid() {
+
+        generatedReference=new MSGeneratorMap(PreStartActivity.SIZE,entropy);
+        generatedReference.generate();
+
+        referenceMap = generatedReference.getBoard();
+
+        tiles2 = new ArrayList<>();
+
+
+        for (int i = 0; i <referenceMap.length ; i++) {
+            for (int j = 0; j < referenceMap[0].length; j++) {
+                tiles2.add(new Tile(referenceMap[i][j]));
+            }
+        }
+
+    }
+
+    public static void undescoveredTiles() {
+        tilesDescovered--;
+    }
+
+
+    private int getSizeParrilla() {
+        int height = getScreenHeight(getBaseContext());
+        int width  = getScreenWidth(getBaseContext());
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.i(getClass().getName(),"Its LANDSCAPE");
+            //height sizes
+            return height;
+        } else {
+            Log.i(getClass().getName(),"Its PORTRAIT");
+
+            return width;
+        }
+    }
+
+    public int getScreenWidth(@NonNull Context context) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            context.getDisplay().getRealMetrics(displayMetrics);
+        }
+        return displayMetrics.widthPixels;
+    }
+    public int getScreenHeight(@NonNull Context context) {
+        // Status bar+actionbar
+        int status_bar = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            status_bar = getResources().getDimensionPixelSize(resourceId);
+        }
 
 
 
+        int action_bar = 0;
+        int actionBarHeight = getSupportActionBar().getHeight();
+        if (actionBarHeight != 0){
+            action_bar= actionBarHeight;
+        }
+
+        final TypedValue tv = new TypedValue();
+        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)){
+            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
+        }
+        action_bar= actionBarHeight;
 
 
 
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            context.getDisplay().getRealMetrics(displayMetrics);
+        }
+
+
+        return displayMetrics.heightPixels - action_bar -status_bar;
     }
 
     private void setTimerTextViews(Bundle savedInstanceState) {
@@ -193,7 +307,7 @@ public class Minesweeper extends AppCompatActivity {
     }
 
     private void gameover() {
-
+        winState=2;
 
     }
 

@@ -55,7 +55,7 @@ public class ButtonAdapter extends BaseAdapter {
         button.setBackgroundColor(Color.GRAY);
         button.setOnClickListener(new MyOnClickListener(position,mContext));
 
-        //return imageView;
         return button;
+
     }
 }

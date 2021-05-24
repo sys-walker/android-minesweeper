@@ -25,7 +25,7 @@ public class MyOnClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        //String[][] reference=Minesweeper.referenceMap;
+        String[][] reference=Minesweeper.referenceMap;
         //
         //Given  Matrix[N][N]   --- acces  ------------> Matrix[x][y]
         //                                                     ^
@@ -37,7 +37,7 @@ public class MyOnClickListener implements View.OnClickListener {
         //coordinates from given position of Array
         //x = position / N :Integer;
         //y = position % N :Integer;
-       /* int x = position / reference.length;
+        int x = position / reference.length;
         int y = position % reference.length;
         String newText = reference[x][y];
 
@@ -51,8 +51,8 @@ public class MyOnClickListener implements View.OnClickListener {
 
 
         if (Minesweeper.generatedReference.getNUMBOMBS()==Minesweeper.tilesDescovered){
-           Minesweeper.time_elapsed = Minesweeper.SECONDS -Minesweeper.time_elapsed;
-            Log.i("Time elapsed: ", " "+(Minesweeper.time_elapsed  + ""));
+           //Minesweeper.time_elapsed = Minesweeper.SECONDS -Minesweeper.time_elapsed;
+            //Log.i("Time elapsed: ", " "+(Minesweeper.time_elapsed  + ""));
 
             Minesweeper.winState=0;
             Intent in = new Intent(context,MailSender.class);
@@ -73,7 +73,7 @@ public class MyOnClickListener implements View.OnClickListener {
         }
 
 
-        b.setClickable(false);*/
+        b.setClickable(false);
 
     }
 }
