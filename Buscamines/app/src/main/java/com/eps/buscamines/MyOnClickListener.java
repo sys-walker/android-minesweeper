@@ -63,6 +63,15 @@ public class MyOnClickListener implements View.OnClickListener {
 
 
         if (newText.equals("B")){
+            // ensure cancellation of countdowns or cronometers
+            if(PreStartActivity.time_control) {
+                // countdown
+                Minesweeper.forcedStop=true;
+
+            }else {
+                Cronometer.running=false;
+                //cronometro
+            }
             b.setBackgroundColor(Color.RED);
             lose_point = new MSGeneratorMap.Point<>(x,y);
             Intent in = new Intent(context,MailSender.class);

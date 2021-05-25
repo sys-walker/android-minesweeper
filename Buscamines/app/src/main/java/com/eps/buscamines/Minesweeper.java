@@ -27,9 +27,10 @@ import static com.eps.buscamines.Constants.*;
 public class Minesweeper extends AppCompatActivity {
     // countdown
     public static int SECONDS =10;
-    private CountDownTimer countDownTimer;
+    public static CountDownTimer countDownTimer;
     public static long current_time=SECONDS*1000;
     public static Boolean isStarted = false;
+    public static Boolean forcedStop=false;
     //common
     public static TextView crono;
 
@@ -237,9 +238,7 @@ public class Minesweeper extends AppCompatActivity {
             time+=""+milis;
         }
 
-
         crono.setText(time);
-
 
         timer = new Thread(new Cronometer());
         Cronometer.running=true;
@@ -250,7 +249,6 @@ public class Minesweeper extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
         milis = savedInstanceState.getInt(MILIS_KEY);
         seg = savedInstanceState.getInt(SEG_KEY);
         minutos = savedInstanceState.getInt(MIN_KEY);
@@ -299,6 +297,7 @@ public class Minesweeper extends AppCompatActivity {
         if(PreStartActivity.time_control) {
             // countdown
             countDownTimer.cancel();
+
         }else {
             Cronometer.running=false;
             //cronometro
@@ -306,15 +305,13 @@ public class Minesweeper extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void gameover() {
-        winState=2;
 
-    }
 
     public class MiContador extends CountDownTimer {
         final int STEP = 1000;
         public MiContador(long lastCountDown_) {
             super(lastCountDown_,1000);
+            Minesweeper.forcedStop=false;
 
         }
 
@@ -349,12 +346,24 @@ public class Minesweeper extends AppCompatActivity {
         @Override
         public void onFinish() {
             Minesweeper.isStarted = false;
+            gameover();
+
+
+        }
+
+    }
+    private void gameover() {
+        if (forcedStop){
+            winState=2;
             Intent in = new Intent(getBaseContext(), MailSender.class);
             startActivity(in);
             finish();
-            gameover();
-
+        }else {
+            System.out.println("Ignoring Game Over because was forced to stop");
         }
+
+
+
     }
 
 
