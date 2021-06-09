@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Minesweeper</string>
+    <string name="help_button_text">Help</string>
+    <string name="main_button_text">Main menu</string>
+    <string name="exit_button_text">Exit game</string>
+    <string name="prestart_button_text">Start game</string>
+    <string name="help_title">Game help</string>
+    <string name="prestart_title">Minesweeper configuration</string>
+    <string name="game_button">Start</string>
+    <string name="mail_sender_text">Send Results</string>
+    <string name="send_button_text">Send</string>
+    <string name="restart_button_text">New Game</string>
+    <string name="email_to_send_field_text">Send to …</string>
+    <string name="log_field_text">Log values</string>
+    <string name="time_send_text">Day and time</string>
+    <string name="email_chooser">Enviar correu …</string>
+    <string name="email_chooser_error">There no mail client installed!</string>
+    <string name="helpPageTitle">Ajuda</string>
+    <string name="generic_text">"       Welcome to MINESWEEPER!!!!!!!!!!!!         The game consists of clearing all the squares on a screen that do not hide a mine.       Some squares have a number, this number indicates the mines that are in all the surrounding squares. Thus, if a square has the number 3, it means that of the eight squares around it (if it is not in a corner or edge) there are 3 with mines and 5 without mines. If an unnumbered box is discovered it indicates that none of the neighboring boxes have a mine and these are discovered automatically.       If a square with a mine is discovered, the game is lost.       A mark can be placed on the squares that the player thinks there are mines to help figure out which ones are nearby.     "</string>
+    <string name="usermame_hint">Username</string>
+    <string name="bomb_entropy_text">Bomb percentage</string>
+    <string name="time_control_text">Time control</string>
+    <string name="size_of_grid">Size of game grid</string>
+    <string name="error_username">Please input an username</string>
+    <string name="countdown_text">"Remaining: "</string>
+    <string name="crono_text">"Elapsed: "</string>
+    <!-- Logging Fragment Chunks Text  -->
+    <string name="username_log">"Nickname: "</string>
+    <string name="cells_log">"Cells: "</string>
+    <string name="mines_entropy">"\% Mines: "</string>
+    <string name="time_boolean">"Time control: "</string>
+    <string name="mines_num">"Bombs: "</string>
+</resources>

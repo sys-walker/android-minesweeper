@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Buscaminas</string>
+    <string name="help_button_text">Ayuda</string>
+    <string name="generic_text">TODO</string>
+    <string name="main_button_text">Menu principal</string>
+    <string name="exit_button_text">Salir del juego</string>
+    <string name="prestart_button_text">Comenzar a jugar</string>
+    <string name="help_title">Ayuda sobr el juego</string>
+    <string name="prestart_title">Configuración Buscaminas</string>
+    <string name="game_button">Empezar</string>
+    <string name="mail_sender_text">Enviar resultados</string>
+    <string name="send_button_text">Enviar</string>
+    <string name="restart_button_text">Partida nueva</string>
+    <string name="email_to_send_field_text">Enviar a ...</string>
+    <string name="log_field_text">Valores de Log</string>
+    <string name="time_send_text">Día y hora</string>
+    <string name="email_chooser">Enivar correo ...</string>
+    <string name="email_chooser_error">No tienes un cliente de correo instalado!</string>
+    <string name="helpPageTitle">Ayuda</string>
+    <string name="usermame_hint">Apodo</string>
+    <string name="bomb_entropy_text">Porcentaje de bombas</string>
+    <string name="time_control_text">Control de tiempo</string>
+    <string name="size_of_grid">Tamaño de la parrilla del juego</string>
+    <string name="error_username">Por favor introduzca un apodo</string>
+    <string name="countdown_text">"Quedan: "</string>
+    <string name="crono_text">"Tiempo: "</string>
+    <string name="username_log">"Apodo: "</string>
+    <string name="cells_log">"Casillas: "</string>
+    <string name="mines_entropy">"\\% Minas: "</string>
+    <string name="time_boolean">"Control de tiempo: "</string>
+    <string name="mines_num">"Minas: "</string>
+</resources>

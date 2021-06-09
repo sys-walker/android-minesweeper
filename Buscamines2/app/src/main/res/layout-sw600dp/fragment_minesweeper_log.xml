@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MinesweeperLogFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TextView
+            android:id="@+id/header_logger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOG..."
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+
+            />
+        <TextView
+            android:id="@+id/initial_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="BasicLog-RecyclerView"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/header_logger"
+
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:layout_below="@+id/initial_info" />
+
+
+    </RelativeLayout>
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <!--
+    crear layout create new
+    -->
+
+
+
+
+
+</FrameLayout>

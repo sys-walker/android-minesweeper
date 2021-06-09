@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Buscamines</string>
+    <string name="help_button_text">Ajuda</string>
+    <string name="generic_text">
+        \n Benvinguts al BUSCA-MINES!!!!!!!!!!!!\n
+        \n El joc consisteix a buidar totes les caselles d\'una pantalla que no ocultin una mina.\n
+        Algunes caselles tenen un nombre, aquest nombre indica les mines que són en totes les caselles circumdants.\n
+        Així, si una casella té el número 3, vol dir que de les vuit caselles\n
+        que hi ha al voltant (si no és en una cantonada o vora) hi ha 3 amb mines i 5 sense mines.\n
+        Si es descobreix una casella sense nombre indica que cap de les caselles veïnes té mina i aquestes es descobreixen automàticament.\n
+        Si es descobreix una casella amb una mina es perd la partida.\n
+        Es pot posar una marca en les caselles que el jugador pensa que hi ha mines per ajudar a descobrir la qual són a prop.
+    </string>
+    <string name="main_button_text">Menu principal</string>
+    <string name="exit_button_text">Sortir del joc</string>
+    <string name="prestart_button_text">Començar joc</string>
+    <string name="help_title">Ajuda del joc</string>
+    <string name="prestart_title">Configuració buscamines</string>
+    <string name="game_button">Comença</string>
+    <string name="mail_sender_text">Enviar Resultats</string>
+    <string name="send_button_text">Envia</string>
+    <string name="restart_button_text">Nova Partida</string>
+    <string name="email_to_send_field_text">Enviar a ...</string>
+    <string name="log_field_text">Valors de Log</string>
+    <string name="time_send_text">Dia i hora</string>
+    <string name="email_chooser">Enviar correu ...</string>
+    <string name="email_chooser_error">No s\'ha trobat cap client de correu!</string>
+    <string name="helpPageTitle">Ajuda</string>
+    <string name="usermame_hint">Nom d\'usuari</string>
+    <string name="bomb_entropy_text">Percentatge de bombes</string>
+    <string name="time_control_text">Control de temps</string>
+    <string name="size_of_grid">Mida de la graella del joc</string>
+    <string name="error_username">Introdueix un nom d\'usuari</string>
+    <string name="off" translatable="false">OFF</string>
+    <string name="on" translatable="false">ON</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_MinsweeperFragment" translatable="false">Hello blank fragment MinsweeperFragment</string>
+    <string name="hello_blank_MinsweeperLogFragment" translatable="false">Hello blank fragment MinsweeperLogFragment</string>
+
+
+    <string name="countdown_text">"Queden: "</string>
+    <string name="crono_text">"Temps: "</string>
+    <!-- Logging Fragment Chunks Text  -->
+    <string name="username_log">"Àlies: "</string>
+    <string name="cells_log">"Caselles: "</string>
+    <string name="mines_entropy">"\% Mines: "</string>
+    <string name="time_boolean">"Control de temps: "</string>
+    <string name="mines_num">"Mines: "</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
+</resources>
