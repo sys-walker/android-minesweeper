@@ -240,7 +240,9 @@
                 android:id="@+id/time_control_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ToggleButton"
+
+                android:textOff="@string/off"
+                android:textOn="@string/on"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.238"

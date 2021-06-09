@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void go_to_prestart(View view) {
         Intent in = new Intent(getBaseContext(),PreStartActivity.class);
-        //Intent in = new Intent(getBaseContext(), CronometroTest.class);
+        in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(in);
         finish();
     }

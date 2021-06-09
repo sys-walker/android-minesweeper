@@ -54,10 +54,10 @@ public class MyOnClickListener implements View.OnClickListener {
            //Minesweeper.time_elapsed = Minesweeper.SECONDS -Minesweeper.time_elapsed;
             //Log.i("Time elapsed: ", " "+(Minesweeper.time_elapsed  + ""));
 
-            Minesweeper.winState=0;
-            Intent in = new Intent(context,MailSender.class);
-            ((Activity) context).finish();
-            context.startActivity(in);
+            //Minesweeper.winState=0;
+            //Intent in = new Intent(context,MailSender.class);
+            //((Activity) context).finish();
+            //context.startActivity(in);
         }
         Minesweeper.undescoveredTiles();
 
@@ -74,9 +74,9 @@ public class MyOnClickListener implements View.OnClickListener {
             }
             b.setBackgroundColor(Color.RED);
             lose_point = new MSGeneratorMap.Point<>(x,y);
-            Intent in = new Intent(context,MailSender.class);
-            ((Activity) context).finish();
-            context.startActivity(in);
+            //Intent in = new Intent(context,MailSender.class);
+            //((Activity) context).finish();
+            //context.startActivity(in);
         }else{
             b.setBackgroundColor(Color.LTGRAY);
         }

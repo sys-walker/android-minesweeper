@@ -26,7 +26,7 @@ import static com.eps.buscamines.Constants.*;
 
 public class Minesweeper extends AppCompatActivity {
     // countdown
-    public static int SECONDS =10;
+    public static int SECONDS =20;
     public static CountDownTimer countDownTimer;
     public static long current_time=SECONDS*1000;
     public static Boolean isStarted = false;
@@ -64,13 +64,6 @@ public class Minesweeper extends AppCompatActivity {
         SIZE_PIXELS = getSizeParrilla();
         setGrid();
         startDisplay(savedInstanceState);
-
-        
-
-
-
-
-
 
     }
 
@@ -172,6 +165,7 @@ public class Minesweeper extends AppCompatActivity {
     }
 
     private void setTimerTextViews(Bundle savedInstanceState) {
+        Log.i(getClass().getName(),"--------> savedInstanceState="+((savedInstanceState==null)? "null": "Exists"));
         if (savedInstanceState!=null){
             milis = savedInstanceState.getInt(MILIS_KEY);
             seg = savedInstanceState.getInt(SEG_KEY);
@@ -185,26 +179,34 @@ public class Minesweeper extends AppCompatActivity {
             seg=0;
             milis=0;
             isOn=false;
+            current_time=SECONDS*1000;
         }
 
         crono = findViewById(R.id.crono);
 
-
+        //PreStartActivity.time_control  true=countdown  False=cronometro
         System.out.println("control de temps?"+ PreStartActivity.time_control);
         if (!PreStartActivity.time_control){
+            TextView titleView= findViewById(R.id.textView0);
+            titleView.setText(getString(R.string.crono_text));
+            System.out.println("crono!!! forcedStop="+forcedStop+" && isOn="+isOn); //forcedStop=false && isOn=true timeout->ignore??
             cronometroEnvirontment();
+
 
         }
         else {
             TextView titleView= findViewById(R.id.textView0);
-            titleView.setText("COUNTDOWN");
+            titleView.setText(getString(R.string.countdown_text));
             if (!isStarted){
                 current_time=SECONDS*1000;
             }
+            Log.v(getClass().getName()," CREATED="+current_time);
 
 
             countDownTimer = new MiContador(current_time);
             countDownTimer.start();
+
+
 
 
         }
@@ -296,10 +298,12 @@ public class Minesweeper extends AppCompatActivity {
         // ensure cancellation of countdowns or cronometers
         if(PreStartActivity.time_control) {
             // countdown
+            forcedStop=true;
             countDownTimer.cancel();
 
         }else {
             Cronometer.running=false;
+
             //cronometro
         }
         super.onDestroy();
@@ -317,6 +321,7 @@ public class Minesweeper extends AppCompatActivity {
 
         @Override
         public void onTick(long millisUntilFinished) {
+            System.out.println("Forced stop? "+Minesweeper.forcedStop);
 
             Minesweeper.current_time = millisUntilFinished;
             if ((millisUntilFinished / 1000)==0){
@@ -339,6 +344,7 @@ public class Minesweeper extends AppCompatActivity {
             }else{
                 current_time+=""+segundos;
             }
+            Log.v(getClass().getName()," time="+current_time);
 
             Minesweeper.crono.setText(current_time);
         }
@@ -346,21 +352,37 @@ public class Minesweeper extends AppCompatActivity {
         @Override
         public void onFinish() {
             Minesweeper.isStarted = false;
-            gameover();
-
+            if (!forcedStop){
+                gameover();
+            }else {
+                System.out.println("Ignoring Game Over because was forced to stop");
+            }
 
         }
 
     }
     private void gameover() {
-        if (forcedStop){
-            winState=2;
-            Intent in = new Intent(getBaseContext(), MailSender.class);
-            startActivity(in);
-            finish();
-        }else {
-            System.out.println("Ignoring Game Over because was forced to stop");
+        //PreStartActivity.time_control  true=countdown  False=cronometro
+
+        System.out.println("GAME OVER!!! forcedStop="+forcedStop+" && isOn="+isOn);  //forcedStop=false && isOn=false timeout->exit
+                                                                                        //forcedStop=false && isOn=true timeout->ignore??
+        if(PreStartActivity.time_control){
+            if (!forcedStop){
+                winState=2;
+                Intent in = new Intent(getBaseContext(), MailSender.class);
+                in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(in);
+                finish();
+
+
+            }else {
+                System.out.println("Ignoring Game Over because was forced to stop");
+            }
+        }else{
+            System.out.println("TInc el puto crono no me cuentes tu vida con el countdown");
         }
+
 
 
 

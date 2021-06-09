@@ -31,4 +31,6 @@
     <string name="time_control_text">Time control</string>
     <string name="size_of_grid">Size of game grid</string>
     <string name="error_username">Please input an username</string>
+    <string name="countdown_text">"Remaining: "</string>
+    <string name="crono_text">"Elapsed: "</string>
 </resources>

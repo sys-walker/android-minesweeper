@@ -33,6 +33,7 @@ public class PreStartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pre_start);
         user_textInputLayout = findViewById(R.id.date_TextField);
 
+
     }
 
     public void go_to_start_game(View view) {

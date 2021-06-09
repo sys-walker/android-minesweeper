@@ -33,5 +33,9 @@
     <string name="time_control_text">Control de temps</string>
     <string name="size_of_grid">Mida de la graella del joc</string>
     <string name="error_username">Introdueix un nom d\'usuari</string>
+    <string name="off" translatable="false">OFF</string>
+    <string name="on" translatable="false">ON</string>
+    <string name="countdown_text">"Queden: "</string>
+    <string name="crono_text">"Temps: "</string>
 
 </resources>
