@@ -47,21 +47,22 @@ public class MinesweeperFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
-            listener= (MinesweeperEvents) context;
+            listener = (MinesweeperEvents) context;
 
         }catch (ClassCastException e){
             throw new ClassCastException(context.toString() +" Must implement MockListener");
         }
         Log.d(TAG+":OnAttach","Attached listener");
+
         if (context instanceof Activity){
 
             Intent in = ((Activity) context).getIntent();
             if (in!=null && in.getExtras()!=null){
                 Bundle Extras = in.getExtras();
-                MS_username=Extras.getString(PRESTART_USERNAME);
-                MS_size= Extras.getInt(PRESTART_SIZE);
+                MS_username = Extras.getString(PRESTART_USERNAME);
+                MS_size = Extras.getInt(PRESTART_SIZE);
                 MS_entropy = Extras.getDouble(PRESTART_ENTROPY);
-                MS_countdown=Extras.getBoolean(PRESTART_COUNTDOWN);
+                MS_countdown = Extras.getBoolean(PRESTART_COUNTDOWN);
 
                 Log.d(TAG+":OnAttach","Extras { Username = "+MS_username+" | "+
                         "Size = "+MS_size+" | "+
@@ -76,7 +77,6 @@ public class MinesweeperFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
     }
 
@@ -89,7 +89,7 @@ public class MinesweeperFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        screen =view;
+        screen = view;
         super.onViewCreated(view, savedInstanceState);
         setGrid(savedInstanceState);
         setTimerTextViews();
@@ -124,7 +124,7 @@ public class MinesweeperFragment extends Fragment {
 
         GridView gridView= screen.findViewById(R.id.minesweeperGridview);
         
-        gridView.setBackgroundColor(Color.BLUE);
+        gridView.setBackgroundColor(Color.DKGRAY);
         gridView.setAdapter(new ButtonAdapter(getContext(),generator.getSize(),listener));
         gridView.setNumColumns(generator.getSize());
     }

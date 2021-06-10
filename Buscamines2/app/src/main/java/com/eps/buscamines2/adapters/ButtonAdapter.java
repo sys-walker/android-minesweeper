@@ -22,14 +22,14 @@ public class ButtonAdapter extends BaseAdapter {
 
     public ButtonAdapter(Context context, int size, MinesweeperEvents listener) {
         this.mContext = context;
-        this.size=size;
+        this.size = size;
         this.generated = MinesweeperFragment.generator;
-        this.listener=listener;
+        this.listener = listener;
     }
 
     @Override
     public int getCount() {
-        return size*size;
+        return size * size;
     }
 
     @Override
@@ -43,8 +43,7 @@ public class ButtonAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup viewGroup)
-    {
+    public View getView(int position, View convertView, ViewGroup viewGroup) {
         //
         //Given  Matrix[N][N]   --- acces  ------------> Matrix[x][y]
         //                                                     ^
@@ -55,38 +54,30 @@ public class ButtonAdapter extends BaseAdapter {
         //x = position / N :Integer;
         //y = position % N :Integer;
 
-
-
-
         Button button;
 
-
-        if (convertView==null){
+        if (convertView == null) {
             button = new Button(this.mContext);
-
             button.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-
-        }else {
+        } else {
             button = (Button) convertView;
         }
 
-       if (generated.getNonCovered()[position]){
+        if (generated.getNonCovered()[position]) {
             button.setText(generated.getBoard()[position]);
             if (generated.getBoard()[position].equals("B")) {
                 button.setBackgroundColor(Color.RED);
-            }else {
+            } else {
                 button.setBackgroundColor(Color.LTGRAY);
             }
             button.setClickable(false);
-        }else {
+        } else {
             button.setText("*");
             button.setBackgroundColor(Color.GRAY);
-            button.setOnClickListener(new MyOnClickListener(position,mContext,button,size, generated,listener));
+            button.setOnClickListener(new MyOnClickListener(position, mContext, button, size, generated, listener));
         }
 
-
         return button;
-
     }
 }
