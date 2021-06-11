@@ -31,5 +31,7 @@
     <string name="time_boolean">"Control de tiempo: "</string>
     <string name="mines_num">"Minas: "</string>
     <string name="lost">Acabas de perder, has pisado una mina!</string>
+    <string name="infoMailSender">Escribe un correo si quieres enviar el resultado siguiente a un amigo:</string>
+
 
 </resources>

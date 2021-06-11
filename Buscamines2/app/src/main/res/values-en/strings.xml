@@ -26,6 +26,7 @@
     <string name="countdown_text">"Remaining: "</string>
     <string name="crono_text">"Elapsed: "</string>
     <string name="lost">You lost, you step on a MINE!</string>
+    <string name="infoMailSender">Write an E-mail if you want to share this results:</string>
     <!-- Logging Fragment Chunks Text  -->
     <string name="username_log">"Nickname: "</string>
     <string name="cells_log">"Cells: "</string>
