@@ -4,248 +4,236 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PreStartActivity">
+    tools:context=".PreStartActivity">
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/date_TextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:hint="@string/usermame_hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13"
+        app:startIconContentDescription="@string/usermame_hint"
+        app:startIconDrawable="@drawable/ic_player">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/date_TextField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="75dp"
-            android:hint="@string/usermame_hint"
-            app:startIconContentDescription="@string/usermame_hint"
-            app:startIconDrawable="@drawable/ic_player">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:layout_width="314dp"
+        android:layout_height="78dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002">
 
+        <ImageView
 
-        <LinearLayout
-            android:layout_width="314dp"
-            android:layout_height="78dp"
-            android:layout_marginBottom="75dp"
-            android:orientation="horizontal">
+            android:layout_width="60dp"
+            android:layout_height="64dp"
 
-            <ImageView
-
-                android:layout_width="60dp"
-                android:layout_height="64dp"
-
-                app:srcCompat="@drawable/ic_grid_game"
-                tools:layout_editor_absoluteX="37dp"
-                tools:layout_editor_absoluteY="450dp" />
-
-            <LinearLayout
-                android:layout_width="217dp"
-                android:layout_height="76dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.268"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.335">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/size_of_grid" />
-
-                <RadioGroup
-                    android:id="@+id/sizeRadioGroup"
-                    android:layout_width="182dp"
-                    android:layout_height="63dp"
-                    android:checkedButton="@+id/radio_button_val7"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/radio_button_val7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="7" />
-
-                    <RadioButton
-                        android:id="@+id/radio_button_val6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="6" />
-
-                    <RadioButton
-                        android:id="@+id/radio_button_val5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5" />
-                </RadioGroup>
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
+            app:srcCompat="@drawable/ic_grid_game"
+            tools:layout_editor_absoluteX="37dp"
+            tools:layout_editor_absoluteY="450dp" />
 
         <LinearLayout
-            android:layout_width="309dp"
-            android:layout_height="95dp"
-            android:layout_marginBottom="75dp"
-            android:orientation="horizontal">
+            android:layout_width="217dp"
+            android:layout_height="76dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.268"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.335">
 
-            <ImageView
-
-                android:layout_width="60dp"
-                android:layout_height="64dp"
-
-                app:srcCompat="@drawable/indice"
-                tools:layout_editor_absoluteX="37dp"
-                tools:layout_editor_absoluteY="450dp" />
-
-            <LinearLayout
-                android:layout_width="217dp"
-                android:layout_height="76dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.268"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.335">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bomb_entropy_text" />
-
-                <RadioGroup
-                    android:id="@+id/entopyRadioGroup"
-                    android:layout_width="182dp"
-                    android:layout_height="63dp"
-                    android:checkedButton="@+id/radio_button_entropy25"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.336"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.574">
-
-                    <RadioButton
-                        android:id="@+id/radio_button_entropy15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="15%" />
-
-                    <RadioButton
-                        android:id="@+id/radio_button_entropy25"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="25%" />
-
-                    <RadioButton
-                        android:id="@+id/radio_button_entropy35"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="35%" />
-
-
-                </RadioGroup>
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="182dp"
-            android:layout_height="63dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginBottom="75dp"
-            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/time_control_text" />
+                android:text="@string/size_of_grid" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <RadioGroup
+                android:id="@+id/sizeRadioGroup"
+                android:layout_width="182dp"
+                android:layout_height="63dp"
+                android:checkedButton="@+id/radio_button_val7"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="44dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/ic_crono_game"
-                    tools:layout_editor_absoluteX="37dp"
-                    tools:layout_editor_absoluteY="450dp" />
-
-                <ToggleButton
-                    android:id="@+id/time_control_button"
+                <RadioButton
+                    android:id="@+id/radio_button_val7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="7" />
 
-                    android:textOff="@string/off"
-                    android:textOn="@string/on"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.702" />
-            </LinearLayout>
+                <RadioButton
+                    android:id="@+id/radio_button_val6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_val5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5" />
+            </RadioGroup>
+
+
         </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="309dp"
+        android:layout_height="95dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.88">
+
+        <ImageView
+
+            android:layout_width="60dp"
+            android:layout_height="64dp"
+
+            app:srcCompat="@drawable/indice"
+            tools:layout_editor_absoluteX="37dp"
+            tools:layout_editor_absoluteY="450dp" />
+
+        <LinearLayout
+            android:layout_width="217dp"
+            android:layout_height="76dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.268"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.335">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bomb_entropy_text" />
+
+            <RadioGroup
+                android:id="@+id/entopyRadioGroup"
+                android:layout_width="182dp"
+                android:layout_height="63dp"
+                android:checkedButton="@+id/radio_button_entropy25"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.336"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.574">
+
+                <RadioButton
+                    android:id="@+id/radio_button_entropy15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15%" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_entropy25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25%" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_entropy35"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="35%" />
+
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="go_to_start_game"
         android:text="@string/game_button"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.812" />
 
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/bombmario"
+    <LinearLayout
+        android:layout_width="189dp"
+        android:layout_height="72dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/bombmario"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.127">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time_control_text" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_crono_game"
+                tools:layout_editor_absoluteX="37dp"
+                tools:layout_editor_absoluteY="450dp" />
+
+
+            <ToggleButton
+                android:id="@+id/time_control_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.238"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.702" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
