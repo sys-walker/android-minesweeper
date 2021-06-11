@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.eps.buscamines2.R;
 import com.eps.buscamines2.activities.PreStartActivity;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class MailSender extends AppCompatActivity {
 

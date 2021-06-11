@@ -30,4 +30,6 @@
     <string name="mines_entropy">"\\% Minas: "</string>
     <string name="time_boolean">"Control de tiempo: "</string>
     <string name="mines_num">"Minas: "</string>
+    <string name="lost">Acabas de perder, has pisado una mina!</string>
+
 </resources>

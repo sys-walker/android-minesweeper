@@ -2,7 +2,7 @@
     <string name="app_name">Buscamines</string>
     <string name="help_button_text">Ajuda</string>
     <string name="generic_text">
-        \n Benvinguts al BUSCA-MINES!!!!!!!!!!!!\n
+        Benvinguts al BUSCA-MINES!!!!!!!!!!!!\n
         \n El joc consisteix a buidar totes les caselles d\'una pantalla que no ocultin una mina.\n
         Algunes caselles tenen un nombre, aquest nombre indica les mines que són en totes les caselles circumdants.\n
         Així, si una casella té el número 3, vol dir que de les vuit caselles\n
@@ -48,5 +48,6 @@
     <string name="mines_num">"Mines: "</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="lost">Has perdut! Has trepitjat una mina</string>
 
 </resources>

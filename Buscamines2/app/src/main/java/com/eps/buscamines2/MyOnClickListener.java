@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -45,10 +46,10 @@ public class MyOnClickListener implements View.OnClickListener  {
         //x = position / N :Integer;
         //y = position % N :Integer;
         button.setText(generated.getBoard()[pos]);
-        button.setText(generated.getBoard()[pos]);
         if (generated.getBoard()[pos].equals("B")) {
             button.setBackgroundColor(Color.RED);
-            //start_Mail_sender();
+            Toast.makeText(context, R.string.lost, Toast.LENGTH_LONG).show();
+            start_Mail_sender();
         }else {
             button.setBackgroundColor(Color.LTGRAY);
         }
