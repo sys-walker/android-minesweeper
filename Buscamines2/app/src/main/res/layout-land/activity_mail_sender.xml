@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MailSender"
-    >
+    tools:context=".activities.MailSender">
 
     <LinearLayout
         android:layout_width="200dp"
@@ -69,9 +68,9 @@
         android:layout_width="306dp"
         android:layout_height="66dp"
         android:hint="@string/log_field_text"
-        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

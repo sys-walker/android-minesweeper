@@ -47,7 +47,8 @@
 
                 app:srcCompat="@drawable/ic_grid_game"
                 tools:layout_editor_absoluteX="37dp"
-                tools:layout_editor_absoluteY="450dp" />
+                tools:layout_editor_absoluteY="450dp"
+                android:contentDescription="@string/imageGraella" />
 
             <LinearLayout
                 android:layout_width="217dp"
@@ -77,19 +78,19 @@
                         android:id="@+id/radio_button_val7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="7" />
+                        android:text="@string/bigSize" />
 
                     <RadioButton
                         android:id="@+id/radio_button_val6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="6" />
+                        android:text="@string/mediumSize" />
 
                     <RadioButton
                         android:id="@+id/radio_button_val5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="5" />
+                        android:text="@string/smallSize" />
                 </RadioGroup>
 
 
@@ -111,7 +112,8 @@
 
                 app:srcCompat="@drawable/indice"
                 tools:layout_editor_absoluteX="37dp"
-                tools:layout_editor_absoluteY="450dp" />
+                tools:layout_editor_absoluteY="450dp"
+                android:contentDescription="@string/bombDescripiton" />
 
             <LinearLayout
                 android:layout_width="217dp"
@@ -147,19 +149,19 @@
                         android:id="@+id/radio_button_entropy15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="15%" />
+                        android:text="@string/smallPercentage" />
 
                     <RadioButton
                         android:id="@+id/radio_button_entropy25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="25%" />
+                        android:text="@string/mediumPercentage" />
 
                     <RadioButton
                         android:id="@+id/radio_button_entropy35"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="35%" />
+                        android:text="@string/bigPercentage" />
 
 
                 </RadioGroup>
@@ -174,7 +176,7 @@
         <LinearLayout
             android:layout_width="182dp"
             android:layout_height="63dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
             android:layout_marginBottom="75dp"
             android:orientation="vertical">
 
@@ -194,7 +196,8 @@
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/ic_crono_game"
                     tools:layout_editor_absoluteX="37dp"
-                    tools:layout_editor_absoluteY="450dp" />
+                    tools:layout_editor_absoluteY="450dp"
+                    android:contentDescription="@string/imageClock" />
 
                 <ToggleButton
                     android:id="@+id/time_control_button"

@@ -33,4 +33,9 @@
     <string name="mines_entropy">"\% Mines: "</string>
     <string name="time_boolean">"Time control: "</string>
     <string name="mines_num">"Bombs: "</string>
+    <string name="bombDescripiton">Is a bomb</string>
+    <string name="imageGraella">graella</string>
+    <string name="imageClock">Clock Image</string>
+
+
 </resources>

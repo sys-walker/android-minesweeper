@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Buscaminas</string>
     <string name="help_button_text">Ayuda</string>
-    <string name="generic_text">TODO</string>
+    <string name="generic_text">"Welcome to MINESWEEPER!!!!!!!!!!!!\n\nThe game consists of clearing all the squares on a screen that do not hide a mine.\n\nSome squares have a number, this number indicates the mines that are in all the surrounding squares.\n\nThus, if a square has the number 3, it means that of the eight squares around it(if it is not in a corner or edge) there are 3 with mines and 5 without mines.\n\nIf an unnumbered box is discovered it indicates that none of the neighboring boxes have a mine and these are discovered automatically.\n\nIf a square with a mine is discovered, the game is lost.\n\nA mark can be placed on the squares that the player thinks there are mines to help figure out which ones are nearby."</string>
     <string name="main_button_text">Menu principal</string>
     <string name="exit_button_text">Salir del juego</string>
     <string name="prestart_button_text">Comenzar a jugar</string>
@@ -32,6 +32,9 @@
     <string name="mines_num">"Minas: "</string>
     <string name="lost">Acabas de perder, has pisado una mina!</string>
     <string name="infoMailSender">Escribe un correo si quieres enviar el resultado siguiente a un amigo:</string>
+    <string name="bombDescripiton">Es una bomba</string>
+    <string name="imageGraella">graella</string>
+    <string name="imageClock">Clock Image</string>
 
 
 </resources>

@@ -50,5 +50,14 @@
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="lost">Has perdut! Has trepitjat una mina</string>
     <string name="infoMailSender">Escriu el un correu si vols compartir el teu resultat (de les dades següents):</string>
+    <string name="smallSize" translatable="false">5</string>
+    <string name="mediumSize" translatable="false">6</string>
+    <string name="bigSize" translatable="false">7</string>
+    <string name="bombDescripiton">Es una bomba</string>
+    <string name="imageGraella">graella</string>
+    <string name="smallPercentage" translatable="false">15%</string>
+    <string name="mediumPercentage" translatable="false">25%</string>
+    <string name="bigPercentage" translatable="false">35%</string>
+    <string name="imageClock">Clock Image</string>
 
 </resources>

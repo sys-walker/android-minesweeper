@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MailSender"
-    >
+    tools:context=".activities.MailSender">
 
     <LinearLayout
         android:layout_width="200dp"
@@ -25,24 +24,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="send_mail"
-            android:text="@string/send_button_text"
-            />
+            android:text="@string/send_button_text" />
 
         <Button
             android:id="@+id/pre_button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="go_to_prestart"
-            android:text="@string/restart_button_text"
-            />
+            android:text="@string/restart_button_text" />
 
         <Button
             android:id="@+id/exit_button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="go_to_eng_game"
-            android:text="@string/exit_button_text"
-            />
+            android:text="@string/exit_button_text" />
 
     </LinearLayout>
 
