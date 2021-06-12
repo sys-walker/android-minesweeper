@@ -43,6 +43,9 @@ public class MinesweeperFragment extends Fragment {
     private boolean MS_countdown;
     private int tilesDescovered;
 
+    public int getTilesDescovered() {
+        return tilesDescovered;
+    }
 
     public MSGeneratorMap getGenerator() {
         return generator;

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -55,31 +56,34 @@ public class MailSender extends AppCompatActivity {
         EditText editText = logsTextInputText.getEditText();
         if (editText != null && results_game !=null) {
 
-            /*for (String key: results_game.keySet()){
-                System.out.println(key);
-            }*/
-            StringBuilder log_text = new StringBuilder();
-            log_text.append(getString(R.string.username_log)+results_game.get(PRESTART_USERNAME)+"\n");
-            log_text.append(getString(R.string.cells_log)   +((MSGeneratorMap)results_game.getParcelable(MINESWEEPER_MAP)).getFullSize()   +"\n");
-            log_text.append(getString(R.string.mines_entropy)   +((MSGeneratorMap)results_game.getParcelable(MINESWEEPER_MAP)).get_percentage_mines()   +"\n");
-            log_text.append(getString(R.string.mines_num)   +((MSGeneratorMap)results_game.getParcelable(MINESWEEPER_MAP)).get_num_bombs()   +"\n");
-            log_text.append( ((results_game.getBoolean(PRESTART_COUNTDOWN))? "\n":getString(R.string.log_time_elapsed)+"XXX"+"s")  +"\n");
+
+            StringBuilder textMail = new StringBuilder();
+            textMail.append(getString(R.string.username_log)+results_game.get(PRESTART_USERNAME)+"\n");
+            textMail.append(getString(R.string.cells_log)   +((MSGeneratorMap)results_game.getParcelable(MINESWEEPER_MAP)).getFullSize()   +"\n");
+            textMail.append(getString(R.string.mines_entropy)   +((MSGeneratorMap)results_game.getParcelable(MINESWEEPER_MAP)).get_percentage_mines()   +"\n");
+            textMail.append(getString(R.string.mines_num)   +((MSGeneratorMap)results_game.getParcelable(MINESWEEPER_MAP)).get_num_bombs()   +"\n");
+            textMail.append( ((results_game.getBoolean(PRESTART_COUNTDOWN))? "\n":getString(R.string.log_time_elapsed)+"XXX"+"s")  +"\n");
 
 
-            //S'HA DE TREURE DEL BUNDLE!!
-            int fake_result = GAME_LOSE;
-            if (fake_result == GAME_WIN){
-                log_text.append(getString(R.string.log_win_statement));
-                //falta mes info
-            }else if (fake_result == GAME_LOSE){
-                log_text.append("Has Perdut!!! Bomba a la casella +MyOnClickListener.lose_point.toString() than faltat +(Minesweeper.tilesDescovered)+ caselles per destapar ");
-            }else if (fake_result == GAME_TIMEOUT){
-                log_text.append(getString(R.string.log_lose_statement)+"\n");
-            }else{
 
+            switch (results_game.getInt(GAME_RESULT_KEY,-1)){
+                case GAME_WIN:
+                    textMail.append(getString(R.string.log_win_statement));
+                    // crono     -> elapsed time
+                    // countdown -> total - transcorregut
+                    break;
+                case GAME_LOSE:
+                    textMail.append(getString(R.string.log_lose_statement));
+                    textMail.append(getString(R.string.log_losepoint_statement) + results_game.getString(LOSE_POINT)+getString(R.string.log_remaining_chunk1) + results_game.getInt(TILES_LEFT) + getString(R.string.log_remaining_chunk2));
+                    break;
+                case GAME_TIMEOUT:
+                    textMail.append(getString(R.string.log_lose_statement)+"\n");
+                    break;
+                default:
+                    Log.wtf(getClass().getName(), "Bro Tio WTF");
             }
 
-           editText.setText(log_text.toString());
+           editText.setText(textMail.toString());
         }
     }
 

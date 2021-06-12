@@ -66,5 +66,8 @@
     <string name="log_time_elapsed">"Temps total: "</string>
     <string name="log_win_statement">Has guanyat!!!</string>
     <string name="log_lose_statement" >Has Perdut :(</string>
+    <string name="log_losepoint_statement">"Bomba a la casella "</string>
+    <string name="log_remaining_chunk2" >" caselles per destapar "</string>
+    <string name="log_remaining_chunk1" >" t'han faltat "</string>
 
 </resources>

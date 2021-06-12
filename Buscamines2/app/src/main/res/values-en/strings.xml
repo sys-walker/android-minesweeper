@@ -43,6 +43,9 @@
     <string name="log_time_elapsed">"Elapsed time: "</string>
     <string name="log_win_statement">You won!!!</string>
     <string name="log_lose_statement">You Lose :(</string>
+    <string name="log_losepoint_statement">"Bomb at "</string>
+    <string name="log_remaining_chunk2">" cells to discover "</string>
+    <string name="log_remaining_chunk1">" left "</string>
 
 
 </resources>

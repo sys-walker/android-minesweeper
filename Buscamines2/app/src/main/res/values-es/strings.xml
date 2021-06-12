@@ -12,10 +12,10 @@
     <string name="mail_sender_text">Enviar resultados</string>
     <string name="send_button_text">Enviar</string>
     <string name="restart_button_text">Partida nueva</string>
-    <string name="email_to_send_field_text">Enviar a ...</string>
+    <string name="email_to_send_field_text">Enviar a …</string>
     <string name="log_field_text">Valores de Log</string>
     <string name="time_send_text">Día y hora</string>
-    <string name="email_chooser">Enivar correo ...</string>
+    <string name="email_chooser">Enivar correo …</string>
     <string name="email_chooser_error">No tienes un cliente de correo instalado!</string>
     <string name="helpPageTitle">Ayuda</string>
     <string name="usermame_hint">Apodo</string>
@@ -42,6 +42,9 @@
     <string name="log_time_elapsed">"Tiempo total: "</string>
     <string name="log_win_statement">Has ganado!!!</string>
     <string name="log_lose_statement">Has perdido :(</string>
+    <string name="log_losepoint_statement">"Bomba a la casella "</string>
+    <string name="log_remaining_chunk2">" casillas por destapar "</string>
+    <string name="log_remaining_chunk1">" te han faltado "</string>
 
 
 </resources>

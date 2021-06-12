@@ -14,13 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.eps.buscamines2.R;
-import com.eps.buscamines2.activities.PreStartActivity;
 import com.eps.buscamines2.adapters.BasicLogAdapter;
 import com.eps.buscamines2.util.MSGeneratorMap;
 
@@ -34,7 +30,7 @@ public class MinesweeperLogFragment extends Fragment{
     private Activity activity;
     private ArrayList<String> listDatos;
     private BasicLogAdapter adapter;
-    private Bundle bundle2;
+    private Bundle bundle;
 
     static final public String BUNDLE_LOGGER="BUNDLE_LOGGER";
 
@@ -66,7 +62,7 @@ public class MinesweeperLogFragment extends Fragment{
 
 
         outState.putStringArrayList(BASICLOG_ADAPTER_KEY,listDatos);
-        outState.putBundle(BUNDLE_LOGGER,bundle2);
+        outState.putBundle(BUNDLE_LOGGER, bundle);
     }
 
     @Override
@@ -80,7 +76,7 @@ public class MinesweeperLogFragment extends Fragment{
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             listDatos = savedInstanceState.getStringArrayList(BASICLOG_ADAPTER_KEY);
-            bundle2 = savedInstanceState.getBundle(BUNDLE_LOGGER);
+            bundle = savedInstanceState.getBundle(BUNDLE_LOGGER);
         }
         super.onViewStateRestored(savedInstanceState);
     }
@@ -103,21 +99,16 @@ public class MinesweeperLogFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         TextView textView= view.findViewById(R.id.initial_info);
 
-
-
-
-
-
         if (savedInstanceState != null) {
            listDatos = savedInstanceState.getStringArrayList(BASICLOG_ADAPTER_KEY);
-           bundle2 = savedInstanceState.getBundle(BUNDLE_LOGGER);
+           bundle = savedInstanceState.getBundle(BUNDLE_LOGGER);
 
 
         }else {
            listDatos = new ArrayList<>();
-           bundle2 = MinesweeperFragment.Extras;
+           bundle = MinesweeperFragment.Extras;
         }
-        String log_header=createHeader(bundle2); //MODIFIED
+        String log_header=createHeader(bundle); //MODIFIED
         textView.setText(log_header);
 
 

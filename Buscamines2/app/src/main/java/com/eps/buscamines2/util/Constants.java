@@ -27,9 +27,13 @@ public class Constants {
     static final public String MAILSENDER_TODAY="MAILSENDER_TODAY";
 
     //GAME STATUSES
+    static final public String TILES_LEFT="TILES_LEFT";
+    static final public String GAME_RESULT_KEY="GAME_RESULT_KEY";
+    static final public String LOSE_POINT="LOSE_POINT";
     static final public int GAME_TIMEOUT=0;
     static final public int GAME_WIN=1;
     static final public int GAME_LOSE=2;
+
 
 
 
