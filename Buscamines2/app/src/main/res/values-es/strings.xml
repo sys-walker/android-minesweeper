@@ -35,6 +35,13 @@
     <string name="bombDescripiton">Es una bomba</string>
     <string name="imageGraella">graella</string>
     <string name="imageClock">Clock Image</string>
+    <string name="chunk_selectedCell">Casilla seleccionada:</string>
+    <string name="remaining_cells">"Celdas restantes: "</string>
+    <string name="logging_string">Registro de movimientos</string>
+    <string name="chunk_remaining_time">"Tiempo restante: "</string>
+    <string name="log_time_elapsed">"Tiempo total: "</string>
+    <string name="log_win_statement">Has ganado!!!</string>
+    <string name="log_lose_statement">Has perdido :(</string>
 
 
 </resources>

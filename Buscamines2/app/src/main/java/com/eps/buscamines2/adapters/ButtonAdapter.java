@@ -16,15 +16,17 @@ public class ButtonAdapter extends BaseAdapter {
 
 
     private final MinesweeperEvents listener;
+    private final MinesweeperFragment test_parameter;
     private Context mContext;
     private int size;
     MSGeneratorMap generated;
 
-    public ButtonAdapter(Context context, int size, MinesweeperEvents listener) {
+    public ButtonAdapter(Context context, int size, MinesweeperEvents listener, MinesweeperFragment test_parameter) {
         this.mContext = context;
         this.size = size;
-        this.generated = MinesweeperFragment.generator;
+       // this.generated = MinesweeperFragment.generator;
         this.listener = listener;
+        this.test_parameter=test_parameter;
     }
 
     @Override
@@ -63,10 +65,13 @@ public class ButtonAdapter extends BaseAdapter {
         } else {
             button = (Button) convertView;
         }
+        if (test_parameter.getGenerator().getNonCovered()[position]) {
 
-        if (generated.getNonCovered()[position]) {
-            button.setText(generated.getBoard()[position]);
-            if (generated.getBoard()[position].equals("B")) {
+
+            button.setText(test_parameter.getGenerator().getBoard()[position]);
+
+            if (test_parameter.getGenerator().getBoard()[position].equals("B")) {
+
                 button.setBackgroundColor(Color.RED);
             } else {
                 button.setBackgroundColor(Color.LTGRAY);
@@ -75,7 +80,7 @@ public class ButtonAdapter extends BaseAdapter {
         } else {
             button.setText("*");
             button.setBackgroundColor(Color.GRAY);
-            button.setOnClickListener(new MyOnClickListener(position, mContext, button, size, generated, listener));
+            button.setOnClickListener(new MyOnClickListener(position, mContext, button, size, listener,test_parameter));
         }
 
         return button;

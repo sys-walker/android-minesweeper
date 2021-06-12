@@ -30,10 +30,13 @@ import static com.eps.buscamines2.util.Constants.*;
 
 
 public class MinesweeperLogFragment extends Fragment{
-    private final String username = PreStartActivity.username;
+
     private Activity activity;
     private ArrayList<String> listDatos;
     private BasicLogAdapter adapter;
+    private Bundle bundle2;
+
+    static final public String BUNDLE_LOGGER="BUNDLE_LOGGER";
 
 
 
@@ -43,9 +46,11 @@ public class MinesweeperLogFragment extends Fragment{
     }
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -58,7 +63,10 @@ public class MinesweeperLogFragment extends Fragment{
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+
+
         outState.putStringArrayList(BASICLOG_ADAPTER_KEY,listDatos);
+        outState.putBundle(BUNDLE_LOGGER,bundle2);
     }
 
     @Override
@@ -72,23 +80,46 @@ public class MinesweeperLogFragment extends Fragment{
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             listDatos = savedInstanceState.getStringArrayList(BASICLOG_ADAPTER_KEY);
+            bundle2 = savedInstanceState.getBundle(BUNDLE_LOGGER);
         }
         super.onViewStateRestored(savedInstanceState);
     }
 
+
+
+    private String createHeader(Bundle bundle) {
+        String header=getString(R.string.username_log)+bundle.getString(PRESTART_USERNAME)+" | " +
+                getString(R.string.cells_log)+ (bundle.getInt(PRESTART_SIZE) *bundle.getInt(PRESTART_SIZE)  )+" | " +
+                getString(R.string.mines_entropy)+(int)((MSGeneratorMap)bundle.getParcelable(MINESWEEPER_MAP)).get_percentage_mines()+" | " +
+                getString(R.string.mines_num)+((MSGeneratorMap)bundle.getParcelable(MINESWEEPER_MAP)).get_num_bombs()+" | " +
+                getString(R.string.time_boolean)+((bundle.getBoolean(PRESTART_COUNTDOWN))? getString(R.string.on):getString(R.string.off));
+        Log.i("LOG...", "createHeader: "+header);
+        return header;
+
+
+    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable  Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView textView= view.findViewById(R.id.initial_info);
-        String log_header=createHeader(MinesweeperFragment.generator);
-        textView.setText(log_header);
+
+
+
+
+
 
         if (savedInstanceState != null) {
            listDatos = savedInstanceState.getStringArrayList(BASICLOG_ADAPTER_KEY);
+           bundle2 = savedInstanceState.getBundle(BUNDLE_LOGGER);
+
 
         }else {
            listDatos = new ArrayList<>();
+           bundle2 = MinesweeperFragment.Extras;
         }
+        String log_header=createHeader(bundle2); //MODIFIED
+        textView.setText(log_header);
+
 
         LinearLayoutManager linearLayout = new LinearLayoutManager(activity.getBaseContext(), LinearLayoutManager.VERTICAL, false);
         RecyclerView recycler = (RecyclerView) view.findViewById(R.id.recyclerId);
@@ -100,23 +131,12 @@ public class MinesweeperLogFragment extends Fragment{
 
     }
 
-    private String createHeader(MSGeneratorMap generator) {
-        String header=getString(R.string.username_log)+PreStartActivity.username+" | " +
-                getString(R.string.cells_log)+generator.getFullSize()+" | " +
-                getString(R.string.mines_entropy)+(int)generator.get_percentage_mines()+" | " +
-                getString(R.string.mines_num)+generator.get_num_bombs()+" | " +
-                "Control de tiempo: "+((PreStartActivity.time_control)? "ON":"OFF");
 
-                ;
-        //String a="LOLASO "+instance.getFullSize();
-        Log.i("LOG...", "createHeader: "+header);
-        return header;
-    }
 
 
     public void addBasicLog(String s) {
         //receiver of Events manager
-        listDatos.add(s);
+        listDatos.add(0,s);
         adapter.notifyDataSetChanged();
     }
 

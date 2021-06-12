@@ -36,6 +36,13 @@
     <string name="bombDescripiton">Is a bomb</string>
     <string name="imageGraella">graella</string>
     <string name="imageClock">Clock Image</string>
+    <string name="chunk_selectedCell">Selected Cell:</string>
+    <string name="remaining_cells">"Remaining cells: "</string>
+    <string name="logging_string">Movements Logging</string>
+    <string name="chunk_remaining_time">"Remaining time: "</string>
+    <string name="log_time_elapsed">"Elapsed time: "</string>
+    <string name="log_win_statement">You won!!!</string>
+    <string name="log_lose_statement">You Lose :(</string>
 
 
 </resources>

@@ -22,14 +22,17 @@ public class MineSweeperHost extends AppCompatActivity implements MinesweeperFra
     }
 
     @Override
-    public void onEventIsDetected(String mockparam) {
+    public void onEventIsDetected(String event_text) {
         MinesweeperLogFragment minesweeperLogFragment = (MinesweeperLogFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentGameLog);
-        if (minesweeperLogFragment != null && minesweeperLogFragment.isInLayout()) {
-            Log.i(MinesweeperFragment.TAG_EVENTS,"Event detected! sending message: " + mockparam);
-            minesweeperLogFragment.addBasicLog(mockparam);
+
+
+        if (minesweeperLogFragment != null && minesweeperLogFragment.isInLayout() ) {
+            Log.i(MinesweeperFragment.TAG_EVENTS,"Event detected! sending message: " + event_text);
+            minesweeperLogFragment.addBasicLog(event_text);
 
         }else{
             Log.i(MinesweeperFragment.TAG_EVENTS,": Event detected! But it was ignored Reason: No Log Fragment was loaded");
         }
     }
+
 }

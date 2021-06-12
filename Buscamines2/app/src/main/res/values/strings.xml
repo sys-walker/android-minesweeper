@@ -59,5 +59,12 @@
     <string name="mediumPercentage" translatable="false">25%</string>
     <string name="bigPercentage" translatable="false">35%</string>
     <string name="imageClock">Clock Image</string>
+    <string name="chunk_selectedCell">Casella seleccionada:</string>
+    <string name="remaining_cells">"Caselles restants: "</string>
+    <string name="logging_string" >Registre de moviments</string>
+    <string name="chunk_remaining_time" >"Temps restant: "</string>
+    <string name="log_time_elapsed">"Temps total: "</string>
+    <string name="log_win_statement">Has guanyat!!!</string>
+    <string name="log_lose_statement" >Has Perdut :(</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.eps.buscamines2.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class BasicLogAdapter extends RecyclerView.Adapter<BasicLogAdapter.ViewHo
             dato= itemView.findViewById(R.id.idDato);
         }
         public void assignarDatos(String dato_) {
+            Log.wtf("???", "recreated");
             dato.setText(dato_);
         }
     }

@@ -80,7 +80,7 @@ public class MSGeneratorMap implements Parcelable {
         }
         return b;
     }
-    public void generate() {
+    public MSGeneratorMap generate() {
 
         this.board=initBoard();
         this.NonCovered=initNonCovered();
@@ -123,7 +123,7 @@ public class MSGeneratorMap implements Parcelable {
                 }
             }
         }
-
+        return this;
     }
     public static class Point<T,U>{
         private final T x;
