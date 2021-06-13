@@ -5,10 +5,7 @@
     <string name="main_button_text">Main menu</string>
     <string name="exit_button_text">Exit game</string>
     <string name="prestart_button_text">Start game</string>
-    <string name="help_title">Game help</string>
-    <string name="prestart_title">Minesweeper configuration</string>
     <string name="game_button">Start</string>
-    <string name="mail_sender_text">Send Results</string>
     <string name="send_button_text">Send</string>
     <string name="restart_button_text">New Game</string>
     <string name="email_to_send_field_text">Send to …</string>

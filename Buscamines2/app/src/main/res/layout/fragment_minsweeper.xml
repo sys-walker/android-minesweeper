@@ -41,12 +41,15 @@
                     android:textStyle="bold"
                     tools:text="Crono: " />
 
+
+                <!-- Just for testing logs cardviews-->
                 <TextView
                     android:id="@+id/crono"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    tools:text="XX:XX:XX" />
+                    android:textSize="34sp"
+
+                    android:text="XX:XX:XX (will not be hardcoded)" />
 
 
             </LinearLayout>

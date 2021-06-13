@@ -22,10 +22,10 @@ public class MyOnClickListener implements View.OnClickListener  {
     private final int sizeRow;
     private final MinesweeperFragment instance;
     private MinesweeperEvents listener;
-
     private Context context;
     private  int pos;
     Button button;
+    String startTimeMovement;
     public MyOnClickListener(int position, Context mContext, Button button, int sizeRow, MinesweeperEvents listener, MinesweeperFragment test_parameter) {
         this.pos=position;
         this.context=mContext;
@@ -33,11 +33,12 @@ public class MyOnClickListener implements View.OnClickListener  {
         this.sizeRow=sizeRow;
         this.listener=listener;
         this.instance=test_parameter;
+        this.startTimeMovement=(String)test_parameter.textViewCountDown.getText();
     }
 
     @Override
     public void onClick(View v) {
-        Log.d("TAG", "onClick: "+sizeRow);
+        Log.d("TAG", "onClick: "+sizeRow+startTimeMovement);
         //
         //Given  Matrix[N][N]   --- acces  ------------> Matrix[x][y]
         //                                                     ^
@@ -51,11 +52,14 @@ public class MyOnClickListener implements View.OnClickListener  {
         button.setText(instance.getGenerator().getBoard()[pos]);
 
         if (instance.getGenerator().get_num_bombs()==instance.getTilesDescovered()-1){
+            instance.endGameNoTimeout=true;
             MinesweeperFragment.Extras.putInt(GAME_RESULT_KEY,GAME_WIN);
+            MinesweeperFragment.Extras.putString(TIME_WINNER,instance.textViewCountDown.getText().toString());
             start_Mail_sender();
         }
 
         if (instance.getGenerator().getBoard()[pos].equals("B")) {
+            instance.endGameNoTimeout=true;
             button.setBackgroundColor(Color.RED);
             Toast.makeText(context, R.string.lost, Toast.LENGTH_LONG).show();
 
@@ -71,9 +75,9 @@ public class MyOnClickListener implements View.OnClickListener  {
 
                 context.getString(R.string.chunk_selectedCell)+
                 new Point<>((pos/instance.getGenerator().getSize()),(pos%instance.getGenerator().getSize())).toString() +"\n"+
-                        "Xx:xx:xx\n" +
-                        "yy:yy:yy\n"+
-                        ( (instance.getMS_countdown())? context.getString(R.string.chunk_remaining_time)+ "xx\n" : "" )
+                        startTimeMovement+"\n" +
+                        instance.textViewCountDown.getText().toString()+
+                        ( (instance.getMS_countdown())?"\n"+ context.getString(R.string.chunk_remaining_time)+ "YY (hardcoded)\n" : "" )
         );
         button.setClickable(false);
 

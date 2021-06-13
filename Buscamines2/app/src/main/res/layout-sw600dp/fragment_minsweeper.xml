@@ -14,8 +14,8 @@
 
 
         <LinearLayout
-            android:layout_width="373dp"
-            android:layout_height="149dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,13 +41,14 @@
                     android:textStyle="bold"
                     tools:text="Tablet Crono: " />
 
+                <!-- Just for testing logs cardviews-->
                 <TextView
                     android:id="@+id/crono"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="XX:XX:XX"
-                    android:textSize="34sp" />
+                    android:textSize="34sp"
 
+                    android:text="XX:XX:XX (will not be hardcoded)" />
 
             </LinearLayout>
 

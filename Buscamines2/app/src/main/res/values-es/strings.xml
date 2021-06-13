@@ -6,10 +6,7 @@
     <string name="main_button_text">Menu principal</string>
     <string name="exit_button_text">Salir del juego</string>
     <string name="prestart_button_text">Comenzar a jugar</string>
-    <string name="help_title">Ayuda sobr el juego</string>
-    <string name="prestart_title">Configuración Buscaminas</string>
     <string name="game_button">Empezar</string>
-    <string name="mail_sender_text">Enviar resultados</string>
     <string name="send_button_text">Enviar</string>
     <string name="restart_button_text">Partida nueva</string>
     <string name="email_to_send_field_text">Enviar a …</string>

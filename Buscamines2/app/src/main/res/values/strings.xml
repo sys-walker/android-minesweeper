@@ -14,10 +14,7 @@
     <string name="main_button_text">Menu principal</string>
     <string name="exit_button_text">Sortir del joc</string>
     <string name="prestart_button_text">Començar joc</string>
-    <string name="help_title">Ajuda del joc</string>
-    <string name="prestart_title">Configuració buscamines</string>
     <string name="game_button">Comença</string>
-    <string name="mail_sender_text">Enviar Resultats</string>
     <string name="send_button_text">Envia</string>
     <string name="restart_button_text">Nova Partida</string>
     <string name="email_to_send_field_text">Enviar a ...</string>
@@ -34,8 +31,6 @@
     <string name="off" translatable="false">OFF</string>
     <string name="on" translatable="false">ON</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_MinsweeperFragment" translatable="false">Hello blank fragment MinsweeperFragment</string>
-    <string name="hello_blank_MinsweeperLogFragment" translatable="false">Hello blank fragment MinsweeperLogFragment</string>
 
 
     <string name="countdown_text">"Queden: "</string>
@@ -47,7 +42,6 @@
     <string name="time_boolean">"Control de temps: "</string>
     <string name="mines_num">"Mines: "</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="lost">Has perdut! Has trepitjat una mina</string>
     <string name="infoMailSender">Escriu el un correu si vols compartir el teu resultat (de les dades següents):</string>
     <string name="smallSize" translatable="false">5</string>

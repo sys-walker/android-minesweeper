@@ -1,37 +1,47 @@
 package com.eps.buscamines2.fragments;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.content.*;
 import android.graphics.Color;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import android.os.CountDownTimer;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.TextView;
-
+import android.view.*;
+import android.widget.*;
 import com.eps.buscamines2.R;
-import com.eps.buscamines2.activities.PreStartActivity;
-import com.eps.buscamines2.adapters.ButtonAdapter;
-import com.eps.buscamines2.util.MSGeneratorMap;
+import com.eps.buscamines2.activities.*;
+import com.eps.buscamines2.adapters.*;
+import com.eps.buscamines2.util.*;
+import java.util.Locale;
+
 
 import static com.eps.buscamines2.util.Constants.*;
 
 public class MinesweeperFragment extends Fragment {
-
-    public static Bundle Extras=null;
-
-
+    // For Debug
     public static final String TAG = "MinesweeperFragment";
     public static final String TAG_EVENTS = "MinesweeperEvents";
+
+    // countdown and stopwatch
+    public TextView textViewCountDown;
+
+    //countdown globals
+    public static CountDownTimer mCountDownTimer;
+    private boolean isCountDownRunning;
+    private long timeLeftInMillis = 5*SECONDS;
+    private long currentTime;
+    public boolean endGameNoTimeout=false;
+
+
+    //
+    public static Bundle Extras=null;
+    public Activity activity;
+
+
+;
 
     private MinesweeperEvents listener;
     private MSGeneratorMap generator;
@@ -39,7 +49,6 @@ public class MinesweeperFragment extends Fragment {
     private View screen;
     private int MS_size;
     private double MS_entropy;
-    private String MS_username;
     private boolean MS_countdown;
     private int tilesDescovered;
 
@@ -67,16 +76,15 @@ public class MinesweeperFragment extends Fragment {
         Log.d(TAG+":OnAttach","Attached listener");
 
         if (context instanceof Activity){
-
+            activity= (Activity) context;
             Intent in = ((Activity) context).getIntent();
             if (in!=null && in.getExtras()!=null){
                 Extras = in.getExtras();
-                MS_username = Extras.getString(PRESTART_USERNAME);
                 MS_size = Extras.getInt(PRESTART_SIZE);
                 MS_entropy = Extras.getDouble(PRESTART_ENTROPY);
                 MS_countdown = Extras.getBoolean(PRESTART_COUNTDOWN);
 
-                Log.d(TAG+":OnAttach","Extras { Username = "+MS_username+" | "+
+                Log.d(TAG+":OnAttach","Extras { Username = "+ Extras.getString(PRESTART_USERNAME) +" | "+
                         "Size = "+MS_size+" | "+
                         "Countdown = "+((MS_countdown)?"ON":"OFF")+" | "+
                         "Entropy = "+MS_entropy+"%}");
@@ -99,20 +107,23 @@ public class MinesweeperFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_minsweeper, container, false);
     }
 
+
+
+
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         screen = view;
         super.onViewCreated(view, savedInstanceState);
-
+        setTextviews(savedInstanceState);
         if (savedInstanceState!=null){
             onRestoreInstanceState(savedInstanceState);
         }else{
             initializeGame();
+            if(MS_countdown) startTimer();
         }
-
-
-
-        setTextviews(savedInstanceState);
+        textViewCountDown = screen.findViewById(R.id.crono);
         setGrid(savedInstanceState);
         Log.i(TAG,MS_countdown+":Countdown");
 
@@ -122,7 +133,6 @@ public class MinesweeperFragment extends Fragment {
         generator = new MSGeneratorMap(MS_size,MS_entropy).generate();
         tilesDescovered = generator.getFullSize();
         //MS_countdown on attach initialization
-
         //put generator in bundle to Pass to fragment
         Extras.putParcelable(MINESWEEPER_MAP,generator);
     }
@@ -146,14 +156,56 @@ public class MinesweeperFragment extends Fragment {
 
 
     private void setTimerTextViews() {
-        TextView titleView= screen.findViewById(R.id.textView0);
+        TextView titleView = screen.findViewById(R.id.textView0);
+
         if (MS_countdown){
             titleView.setText(getString(R.string.countdown_text));
+
+
+
         }else{
             titleView.setText(getString(R.string.crono_text));
 
         }
     }
+
+    private void startTimer() {
+        currentTime = System.currentTimeMillis() + timeLeftInMillis;
+        mCountDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
+            @Override
+            public void onFinish() {
+                isCountDownRunning = false;
+                gameOver();
+
+            }
+        }.start();
+        isCountDownRunning = true;
+    }
+
+
+    private void gameOver() {
+        if (!endGameNoTimeout){
+            Intent in= new Intent(activity, MailSender.class);
+            Extras.putInt(GAME_RESULT_KEY,GAME_TIMEOUT);
+            activity.startActivity(in);
+            activity.finish();
+        }
+
+
+    }
+
+    private void updateCountDownText() {
+        int minutes = (int) (timeLeftInMillis / 1000) / 60;
+        int seconds = (int) (timeLeftInMillis / 1000) % 60;
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+        textViewCountDown.setText(timeLeftFormatted);
+    }
+
 
     private void setGrid(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
@@ -184,6 +236,14 @@ public class MinesweeperFragment extends Fragment {
             generator= savedInstanceState.getParcelable(MINESWEEPER_MAP);
             tilesDescovered = savedInstanceState.getInt(TILES_DISCOVERED);
             MS_countdown= savedInstanceState.getBoolean(COUNTDWN_BOOLEAN);
+
+
+            timeLeftInMillis = savedInstanceState.getLong(COUNTDOWN_MILIS_LEFT);
+            isCountDownRunning = savedInstanceState.getBoolean(COUNTDOWN_TIMMER_RUNNING);
+            if (isCountDownRunning) {
+                currentTime = savedInstanceState.getLong(COUNTDOWN_END_TIME);
+                timeLeftInMillis = currentTime - System.currentTimeMillis();
+            }
         }
 
         super.onViewStateRestored(savedInstanceState);
@@ -194,6 +254,10 @@ public class MinesweeperFragment extends Fragment {
         outState.putParcelable(MINESWEEPER_MAP,generator);
         outState.putInt(TILES_DISCOVERED,tilesDescovered);
         outState.putBoolean(COUNTDWN_BOOLEAN,MS_countdown);
+
+        outState.putLong(COUNTDOWN_MILIS_LEFT, timeLeftInMillis);
+        outState.putBoolean(COUNTDOWN_TIMMER_RUNNING, isCountDownRunning);
+        outState.putLong(COUNTDOWN_END_TIME, currentTime);
         super.onSaveInstanceState(outState);
     }
 
@@ -202,6 +266,16 @@ public class MinesweeperFragment extends Fragment {
         tilesDescovered = savedInstanceState.getInt(TILES_DISCOVERED);
         generator= savedInstanceState.getParcelable(MINESWEEPER_MAP);
         MS_countdown= savedInstanceState.getBoolean(COUNTDWN_BOOLEAN);
+        if(MS_countdown){
+            timeLeftInMillis = savedInstanceState.getLong(COUNTDOWN_MILIS_LEFT);
+            isCountDownRunning = savedInstanceState.getBoolean(COUNTDOWN_TIMMER_RUNNING);
+            updateCountDownText();
+            if (isCountDownRunning) {
+                currentTime = savedInstanceState.getLong(COUNTDOWN_END_TIME);
+                timeLeftInMillis = currentTime - System.currentTimeMillis();
+                startTimer();
+            }
+        }
     }
 
     public void undescoveredTiles() {

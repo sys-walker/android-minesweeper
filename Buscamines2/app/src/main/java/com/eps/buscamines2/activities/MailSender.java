@@ -8,12 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.*;
 
 import com.eps.buscamines2.R;
-import com.eps.buscamines2.fragments.MinesweeperFragment;
-import com.eps.buscamines2.util.MSGeneratorMap;
+import com.eps.buscamines2.fragments.*;
+import com.eps.buscamines2.util.*;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Date;
@@ -62,7 +61,7 @@ public class MailSender extends AppCompatActivity {
             textMail.append(getString(R.string.cells_log)   +((MSGeneratorMap)results_game.getParcelable(MINESWEEPER_MAP)).getFullSize()   +"\n");
             textMail.append(getString(R.string.mines_entropy)   +((MSGeneratorMap)results_game.getParcelable(MINESWEEPER_MAP)).get_percentage_mines()   +"\n");
             textMail.append(getString(R.string.mines_num)   +((MSGeneratorMap)results_game.getParcelable(MINESWEEPER_MAP)).get_num_bombs()   +"\n");
-            textMail.append( ((results_game.getBoolean(PRESTART_COUNTDOWN))? "\n":getString(R.string.log_time_elapsed)+"XXX"+"s")  +"\n");
+            textMail.append( ((results_game.getBoolean(PRESTART_COUNTDOWN))? "\n":getString(R.string.log_time_elapsed)+results_game.get(TIME_WINNER)+"s")  +"\n");
 
 
 
@@ -73,14 +72,17 @@ public class MailSender extends AppCompatActivity {
                     // countdown -> total - transcorregut
                     break;
                 case GAME_LOSE:
-                    textMail.append(getString(R.string.log_lose_statement));
+                    textMail.append(getString(R.string.log_lose_statement)+"\n");
                     textMail.append(getString(R.string.log_losepoint_statement) + results_game.getString(LOSE_POINT)+getString(R.string.log_remaining_chunk1) + results_game.getInt(TILES_LEFT) + getString(R.string.log_remaining_chunk2));
                     break;
                 case GAME_TIMEOUT:
                     textMail.append(getString(R.string.log_lose_statement)+"\n");
                     break;
                 default:
-                    Log.wtf(getClass().getName(), "Bro Tio WTF");
+                    for (String key: results_game.keySet()){
+                        System.out.println(key);
+                    }
+                    Log.wtf(getClass().getName(), "Bro Tio WTF ");
             }
 
            editText.setText(textMail.toString());
