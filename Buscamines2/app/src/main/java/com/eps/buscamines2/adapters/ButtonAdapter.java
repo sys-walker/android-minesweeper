@@ -2,6 +2,7 @@ package com.eps.buscamines2.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -80,8 +81,18 @@ public class ButtonAdapter extends BaseAdapter {
             button.setText("*");
             button.setBackgroundResource(R.drawable.shape);
             button.setOnClickListener(new MyOnClickListener(position, mContext, button, size, listener,test_parameter));
+
+            button.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    button.setText("");
+                    button.setBackgroundResource(R.drawable.littleflag);
+                    return true;
+                }
+            });
         }
 
         return button;
     }
+
 }

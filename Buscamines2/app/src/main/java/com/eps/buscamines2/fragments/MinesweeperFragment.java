@@ -109,9 +109,6 @@ public class MinesweeperFragment extends Fragment {
 
 
 
-
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         screen = view;
