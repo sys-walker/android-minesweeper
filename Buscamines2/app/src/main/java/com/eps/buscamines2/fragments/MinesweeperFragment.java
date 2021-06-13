@@ -263,7 +263,8 @@ public class MinesweeperFragment extends Fragment {
         generator = savedInstanceState.getParcelable(MINESWEEPER_MAP);
         MS_countdown = savedInstanceState.getBoolean(COUNTDWN_BOOLEAN);
         currentTimeString = savedInstanceState.getString(TIMER_STRING);
-
+        TextView remaining = screen.findViewById(R.id.remaining_tiles);
+        remaining.setText(String.valueOf(tilesDescovered));
         if (MS_countdown) {
             timeLeftInMillis = savedInstanceState.getLong(COUNTDOWN_MILIS_LEFT);
             isCountDownRunning = savedInstanceState.getBoolean(COUNTDOWN_TIMMER_RUNNING);
@@ -277,9 +278,6 @@ public class MinesweeperFragment extends Fragment {
             milis= savedInstanceState.getInt(TIMER_MILIS);
             running= savedInstanceState.getBoolean(TIMER_RUNNING);
             wasRunning= savedInstanceState.getBoolean(TIMER_WAS_RUNNING);
-
-            TextView remaining = screen.findViewById(R.id.remaining_tiles);
-            remaining.setText(String.valueOf(tilesDescovered));
             startTimer();
         }
     }
