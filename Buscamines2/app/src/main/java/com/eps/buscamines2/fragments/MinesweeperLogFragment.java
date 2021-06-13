@@ -35,8 +35,6 @@ public class MinesweeperLogFragment extends Fragment{
     static final public String BUNDLE_LOGGER="BUNDLE_LOGGER";
 
 
-
-
     public MinesweeperLogFragment() {
         // Required empty public constructor
     }

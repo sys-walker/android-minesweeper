@@ -213,7 +213,7 @@ public class MinesweeperFragment extends Fragment {
 
         GridView gridView= screen.findViewById(R.id.minesweeperGridview);
         
-        gridView.setBackgroundColor(Color.DKGRAY);
+        gridView.setBackgroundColor(Color.parseColor("#8b8589"));
         gridView.setAdapter(new ButtonAdapter(getContext(),generator.getSize(),listener,this));
         gridView.setNumColumns(generator.getSize());
     }

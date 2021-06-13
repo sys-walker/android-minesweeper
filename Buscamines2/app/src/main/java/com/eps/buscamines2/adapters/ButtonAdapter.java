@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 
+import com.eps.buscamines2.R;
 import com.eps.buscamines2.fragments.MinesweeperFragment;
 import com.eps.buscamines2.fragments.MinesweeperFragment.*;
 import com.eps.buscamines2.util.MSGeneratorMap;
@@ -61,7 +62,6 @@ public class ButtonAdapter extends BaseAdapter {
         if (convertView == null) {
             button = new Button(this.mContext);
             button.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
         } else {
             button = (Button) convertView;
         }
@@ -71,7 +71,6 @@ public class ButtonAdapter extends BaseAdapter {
             button.setText(test_parameter.getGenerator().getBoard()[position]);
 
             if (test_parameter.getGenerator().getBoard()[position].equals("B")) {
-
                 button.setBackgroundColor(Color.RED);
             } else {
                 button.setBackgroundColor(Color.LTGRAY);
@@ -79,7 +78,7 @@ public class ButtonAdapter extends BaseAdapter {
             button.setClickable(false);
         } else {
             button.setText("*");
-            button.setBackgroundColor(Color.GRAY);
+            button.setBackgroundResource(R.drawable.shape);
             button.setOnClickListener(new MyOnClickListener(position, mContext, button, size, listener,test_parameter));
         }
 

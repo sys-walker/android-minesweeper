@@ -26,6 +26,7 @@ public class MyOnClickListener implements View.OnClickListener  {
     private  int pos;
     Button button;
     String startTimeMovement;
+
     public MyOnClickListener(int position, Context mContext, Button button, int sizeRow, MinesweeperEvents listener, MinesweeperFragment test_parameter) {
         this.pos=position;
         this.context=mContext;

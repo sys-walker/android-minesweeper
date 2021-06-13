@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void go_to_prestart(View view) {
+    public void goToPrestart(View view) {
         Intent in = new Intent(getBaseContext(), PreStartActivity.class);
         //in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void go_to_eng_game(View view) {
+    public void goToEndGame(View view) {
         finishAffinity();
     }
 
-    public void go_to_help(View view) {
+    public void goToHelp(View view) {
         Intent in = new Intent(getBaseContext(), HelpActivity.class);
         in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
