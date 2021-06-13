@@ -92,11 +92,6 @@ public class MailSender extends AppCompatActivity {
             switch (results_game.getInt(GAME_RESULT_KEY, -1)) {
                 case GAME_WIN:
                     textMail.append(getString(R.string.log_win_statement));
-                    if (!results_game.getBoolean(PRESTART_COUNTDOWN)){
-                        textMail.append(results_game.getString(TIME_WINNER));
-                    }
-
-
                     break;
                 case GAME_LOSE:
                     textMail.append(getString(R.string.log_lose_statement)).append("\n");
