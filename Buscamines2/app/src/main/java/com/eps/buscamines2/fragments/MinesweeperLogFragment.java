@@ -9,15 +9,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.eps.buscamines2.R;
-import com.eps.buscamines2.adapters.BasicLogAdapter;
+import com.eps.buscamines2.adapters.GameLogAdapter;
 import com.eps.buscamines2.util.MSGeneratorMap;
 
 import java.util.ArrayList;
@@ -29,7 +27,7 @@ public class MinesweeperLogFragment extends Fragment{
 
     private Activity activity;
     private ArrayList<String> listDatos;
-    private BasicLogAdapter adapter;
+    private GameLogAdapter adapter;
     private Bundle bundle;
 
     static final public String BUNDLE_LOGGER="BUNDLE_LOGGER";
@@ -87,7 +85,6 @@ public class MinesweeperLogFragment extends Fragment{
                 getString(R.string.mines_entropy)+(int)((MSGeneratorMap)bundle.getParcelable(MINESWEEPER_MAP)).get_percentage_mines()+" | " +
                 getString(R.string.mines_num)+((MSGeneratorMap)bundle.getParcelable(MINESWEEPER_MAP)).get_num_bombs()+" | " +
                 getString(R.string.time_boolean)+((bundle.getBoolean(PRESTART_COUNTDOWN))? getString(R.string.on):getString(R.string.off));
-        Log.i("LOG...", "createHeader: "+header);
         return header;
 
 
@@ -114,7 +111,7 @@ public class MinesweeperLogFragment extends Fragment{
         RecyclerView recycler = (RecyclerView) view.findViewById(R.id.recyclerId);
         recycler.setLayoutManager(linearLayout);
 
-        adapter = new BasicLogAdapter(activity.getBaseContext(),listDatos);
+        adapter = new GameLogAdapter(activity.getBaseContext(),listDatos);
         recycler.setAdapter(adapter);
 
 

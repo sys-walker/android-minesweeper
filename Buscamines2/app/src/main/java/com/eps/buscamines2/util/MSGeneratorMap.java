@@ -2,17 +2,14 @@ package com.eps.buscamines2.util;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class MSGeneratorMap implements Parcelable {
-    private static MSGeneratorMap INSTANCE=null;
     private String[] board;
-    private Boolean[] NonCovered;
-    private int SIZE;
-    private int NUMBOMBS;
+    private Boolean[] nonCovered;
+    private final int SIZE;
+    private final int NUMBOMBS;
     private double entropy;
 
     public MSGeneratorMap(int size, double entropy) {
@@ -43,32 +40,15 @@ public class MSGeneratorMap implements Parcelable {
     }
 
     public Boolean[] getNonCovered() {
-        return NonCovered;
+        return nonCovered;
     }
 
     private Boolean[] initNonCovered() {
-        Boolean[] a = new Boolean[this.SIZE*this.SIZE];
+        Boolean[] nonCovered = new Boolean[this.SIZE*this.SIZE];
         for (int i = 0; i < this.SIZE*this.SIZE; i++) {
-            a[i]=false;
+            nonCovered[i]=false;
         }
-        return a;
-    }
-
-    public static MSGeneratorMap getInstance(int size, double entropy) {
-        if (INSTANCE == null) {
-            Log.wtf("TAG MSG","IS null but not anymore");
-            INSTANCE = new MSGeneratorMap(size,entropy);
-        }
-        Log.wtf("TAG MSG NotNull","changed config"+INSTANCE);
-        INSTANCE.SIZE=size;
-        INSTANCE.entropy=entropy;
-        return INSTANCE;
-    }
-    public static MSGeneratorMap getNonNullInstance() throws NullPointerException{
-        if (INSTANCE == null) {
-            throw new NullPointerException(MSGeneratorMap.class.getName()+": Generator not Instantied");
-        }
-        return INSTANCE;
+        return nonCovered;
     }
 
     private String[] initBoard() {
@@ -83,7 +63,7 @@ public class MSGeneratorMap implements Parcelable {
     public MSGeneratorMap generate() {
 
         this.board=initBoard();
-        this.NonCovered=initNonCovered();
+        this.nonCovered=initNonCovered();
         ArrayList<Point<Integer,Integer>> bomb_positions = new ArrayList<>(this.NUMBOMBS);
 
         int size=0;
@@ -169,14 +149,14 @@ public class MSGeneratorMap implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeStringArray(this.board);
-        dest.writeArray(this.NonCovered);
+        dest.writeArray(this.nonCovered);
         dest.writeInt(this.SIZE);
         dest.writeInt(this.NUMBOMBS);
     }
 
     protected MSGeneratorMap(Parcel in) {
         this.board = in.createStringArray();
-        this.NonCovered = (Boolean[]) in.readArray(Boolean[].class.getClassLoader());
+        this.nonCovered = (Boolean[]) in.readArray(Boolean[].class.getClassLoader());
         this.SIZE = in.readInt();
         this.NUMBOMBS = in.readInt();
     }

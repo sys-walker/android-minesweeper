@@ -3,8 +3,6 @@ package com.eps.buscamines2.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-
 import com.eps.buscamines2.R;
 import com.eps.buscamines2.fragments.MinesweeperFragment;
 import com.eps.buscamines2.fragments.MinesweeperLogFragment;
@@ -27,11 +25,8 @@ public class MineSweeperHost extends AppCompatActivity implements MinesweeperFra
 
 
         if (minesweeperLogFragment != null && minesweeperLogFragment.isInLayout() ) {
-            Log.i(MinesweeperFragment.TAG_EVENTS,"Event detected! sending message: " + event_text);
             minesweeperLogFragment.addBasicLog(event_text);
 
-        }else{
-            Log.i(MinesweeperFragment.TAG_EVENTS,": Event detected! But it was ignored Reason: No Log Fragment was loaded");
         }
     }
 

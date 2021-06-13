@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.eps.buscamines2.R;
-import com.eps.buscamines2.activities.MineSweeperHost;
 import com.google.android.material.textfield.TextInputLayout;
 
 import static com.eps.buscamines2.util.Constants.*;
@@ -51,16 +49,8 @@ public class PreStartActivity extends AppCompatActivity {
         size = getRadioButtonSizeVal();
         time_control= getTimeControlToggleButton();
         ENTROPY = getRadioButtonEntropyVal();
-        Log.d(TAG+":Leaving Activity ->","{ Username = "+username+" | "+
-                "Size = "+size+" | "+
-                "Countdown = "+((time_control)?"ON":"OFF")+" | "+
-                "Entropy = "+ENTROPY+"%}");
-
 
         Intent in = new Intent(getBaseContext(), MineSweeperHost.class);
-        //in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        //in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
         in.putExtra(PRESTART_USERNAME,username);
         in.putExtra(PRESTART_SIZE,size);
         in.putExtra(PRESTART_COUNTDOWN,time_control);

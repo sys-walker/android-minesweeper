@@ -20,12 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToPrestart(View view) {
         Intent in = new Intent(getBaseContext(), PreStartActivity.class);
-        //in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        //in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(in);
         finish();
-        //finishAffinity();
-
     }
 
     public void goToEndGame(View view) {
@@ -34,9 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToHelp(View view) {
         Intent in = new Intent(getBaseContext(), HelpActivity.class);
-        in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(in);
-        finishAffinity();
+        finish();
     }
 }

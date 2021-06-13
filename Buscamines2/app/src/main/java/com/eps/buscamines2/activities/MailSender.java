@@ -19,18 +19,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Date;
 import java.util.Objects;
 
-import static com.eps.buscamines2.util.Constants.GAME_LOSE;
-import static com.eps.buscamines2.util.Constants.GAME_RESULT_KEY;
-import static com.eps.buscamines2.util.Constants.GAME_TIMEOUT;
-import static com.eps.buscamines2.util.Constants.GAME_WIN;
-import static com.eps.buscamines2.util.Constants.LOSE_POINT;
-import static com.eps.buscamines2.util.Constants.MAILSENDER_RESULTS;
-import static com.eps.buscamines2.util.Constants.MAILSENDER_TODAY;
-import static com.eps.buscamines2.util.Constants.MINESWEEPER_MAP;
-import static com.eps.buscamines2.util.Constants.PRESTART_COUNTDOWN;
-import static com.eps.buscamines2.util.Constants.PRESTART_USERNAME;
-import static com.eps.buscamines2.util.Constants.TILES_LEFT;
-import static com.eps.buscamines2.util.Constants.TIME_WINNER;
+import static com.eps.buscamines2.util.Constants.*;
+
 
 public class MailSender extends AppCompatActivity {
     public Bundle results_game;
@@ -102,20 +92,24 @@ public class MailSender extends AppCompatActivity {
             switch (results_game.getInt(GAME_RESULT_KEY, -1)) {
                 case GAME_WIN:
                     textMail.append(getString(R.string.log_win_statement));
-                    // crono     -> elapsed time
-                    // countdown -> total - transcorregut
+                    if (!results_game.getBoolean(PRESTART_COUNTDOWN)){
+                        textMail.append(results_game.getString(TIME_WINNER));
+                    }
+
+
                     break;
                 case GAME_LOSE:
                     textMail.append(getString(R.string.log_lose_statement)).append("\n");
                     textMail.append(getString(R.string.log_losepoint_statement)).append(results_game.getString(LOSE_POINT)).append(getString(R.string.log_remaining_chunk1)).append(results_game.getInt(TILES_LEFT)).append(getString(R.string.log_remaining_chunk2));
+
                     break;
                 case GAME_TIMEOUT:
                     textMail.append(getString(R.string.log_lose_statement)).append("\n");
+                    textMail.append(getString(R.string.log_remaining_chunk1)).append(results_game.getInt(TILES_LEFT)).append(getString(R.string.log_remaining_chunk2));
+
                     break;
                 default:
-                    for (String key : results_game.keySet()) {
-                        System.out.println(key);
-                    }
+
                     Log.wtf(getClass().getName(), "Bro Tio WTF ");
             }
             editText.setText(textMail.toString());

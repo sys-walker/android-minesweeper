@@ -2,7 +2,6 @@ package com.eps.buscamines2.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -12,7 +11,6 @@ import com.eps.buscamines2.R;
 import com.eps.buscamines2.fragments.MinesweeperFragment;
 import com.eps.buscamines2.fragments.MinesweeperFragment.*;
 import com.eps.buscamines2.util.MSGeneratorMap;
-import com.eps.buscamines2.MyOnClickListener;
 
 public class ButtonAdapter extends BaseAdapter {
 
@@ -48,16 +46,6 @@ public class ButtonAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        //
-        //Given  Matrix[N][N]   --- acces  ------------> Matrix[x][y]
-        //                                                     ^
-        //                                                     | equivalents
-        //                                                     V
-        //Give Array[N*N]       --> access as Matrix --> Array [(N*x)+y]
-        //coordinates from given position of Array
-        //x = position / N :Integer;
-        //y = position % N :Integer;
-
         Button button;
 
         if (convertView == null) {
@@ -80,7 +68,7 @@ public class ButtonAdapter extends BaseAdapter {
         } else {
             button.setText("*");
             button.setBackgroundResource(R.drawable.shape);
-            button.setOnClickListener(new MyOnClickListener(position, mContext, button, size, listener,test_parameter));
+            button.setOnClickListener(new TileListener(position, mContext, button, size, listener,test_parameter));
 
             button.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
