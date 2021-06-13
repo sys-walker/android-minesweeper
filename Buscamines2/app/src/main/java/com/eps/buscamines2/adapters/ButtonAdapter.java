@@ -71,11 +71,23 @@ public class ButtonAdapter extends BaseAdapter {
             button.setOnClickListener(new TileListener(position, mContext, button, size, listener,test_parameter));
 
             button.setOnLongClickListener(new View.OnLongClickListener() {
+
+                private boolean flagged=false;
+
                 @Override
                 public boolean onLongClick(View v) {
                     button.setText("");
-                    button.setBackgroundResource(R.drawable.littleflag);
+                    if (flagged){
+                        button.setText("*");
+                        button.setBackgroundResource(R.drawable.shape);
+                        flagged=false;
+                    }else{
+                        button.setBackgroundResource(R.drawable.littleflag);
+                        flagged=true;
+
+                    }
                     button.setClickable(true);
+
                     return true;
                 }
             });
