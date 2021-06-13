@@ -75,6 +75,7 @@ public class ButtonAdapter extends BaseAdapter {
                 public boolean onLongClick(View v) {
                     button.setText("");
                     button.setBackgroundResource(R.drawable.littleflag);
+                    button.setClickable(true);
                     return true;
                 }
             });
