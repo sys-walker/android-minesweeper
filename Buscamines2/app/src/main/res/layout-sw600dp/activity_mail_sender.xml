@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="send_mail"
+            android:onClick="goToSendEmail"
             android:text="@string/send_button_text"
             android:textSize="24sp" />
 
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="go_to_prestart"
+            android:onClick="goToPreStart"
             android:text="@string/restart_button_text"
             android:textSize="24sp" />
 
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="go_to_eng_game"
+            android:onClick="goToEndGame"
             android:text="@string/exit_button_text"
             android:textSize="24sp" />
 

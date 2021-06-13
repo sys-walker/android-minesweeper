@@ -160,12 +160,8 @@ public class MinesweeperFragment extends Fragment {
 
         if (MS_countdown){
             titleView.setText(getString(R.string.countdown_text));
-
-
-
         }else{
             titleView.setText(getString(R.string.crono_text));
-
         }
     }
 
@@ -181,7 +177,6 @@ public class MinesweeperFragment extends Fragment {
             public void onFinish() {
                 isCountDownRunning = false;
                 gameOver();
-
             }
         }.start();
         isCountDownRunning = true;
@@ -195,8 +190,6 @@ public class MinesweeperFragment extends Fragment {
             activity.startActivity(in);
             activity.finish();
         }
-
-
     }
 
     private void updateCountDownText() {

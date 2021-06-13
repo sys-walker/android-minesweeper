@@ -23,21 +23,21 @@
             android:id="@+id/send_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="send_mail"
+            android:onClick="goToSendEmail"
             android:text="@string/send_button_text" />
 
         <Button
             android:id="@+id/pre_button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="go_to_prestart"
+            android:onClick="goToPreStart"
             android:text="@string/restart_button_text" />
 
         <Button
             android:id="@+id/exit_button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="go_to_eng_game"
+            android:onClick="goToEndGame"
             android:text="@string/exit_button_text" />
 
     </LinearLayout>
